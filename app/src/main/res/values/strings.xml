@@ -1,6 +1,26 @@
 <resources>
-    <string name="app_name">It Inventory</string>
-    <string name="action_delete">Delete</string>
-    <string name="action_filter">Filter</string>
-    <string name="main_activity_name">Bureaux</string>
+    <string name="app_name">Lab3_Ex1</string>
+
+    <string name="kb_prompt">Keyboard language</string>
+    <string-array name="keyboard_types">
+        <item>QWERTZ</item>
+        <item>QWERTY</item>
+        <item>AZERTY</item>
+        <item>Dvorak</item>
+        <item>Colemak</item>
+    </string-array>
+
+    <string name="os_prompt">Keyboard language</string>
+    <string-array name="os_types">
+        <item>Windows</item>
+        <item>MAC OS</item>
+        <item>Linux</item>
+    </string-array>
+
+    <string name="storage_prompt">Keyboard language</string>
+    <string-array name="storage_unities">
+        <item>TO</item>
+        <item>GO</item>
+    </string-array>
+
 </resources>
