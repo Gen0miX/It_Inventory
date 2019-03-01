@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="16dp"
+    tools:context=".EditActivity"
+    android:textColor="@android:color/holo_blue_bright">
+
+    <Switch
+        android:textSize="20dp"
+        android:id="@+id/screen_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:showText="true"
+        android:text="Screens:"
+        android:textOff="Simple"
+        android:textOn="Multiple"
+        android:layout_margin="12dp"/>
+
+    <RadioButton
+        android:textSize="20dp"
+        android:layout_width="239dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layoutDirection="rtl"
+        android:text="Portable"
+        android:textAlignment="textStart"
+        android:layout_margin="12dp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp">
+
+        <TextView
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
+            android:layout_width="87dp"
+            android:layout_height="31dp"
+            android:text="OS" />
+
+        <Spinner
+            android:id="@+id/os_spinner"
+            android:layout_width="204dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/os_types"
+            android:prompt="@string/os_prompt" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp">
+
+        <TextView
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
+            android:layout_width="87dp"
+            android:layout_height="31dp"
+            android:text="Keyboard" />
+
+        <Spinner
+            android:id="@+id/keyboard_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/keyboard_types"
+            android:prompt="@string/kb_prompt"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp">
+
+        <TextView
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
+            android:layout_width="87dp"
+            android:layout_height="31dp"
+            android:text="RAM" />
+        <EditText
+            android:id="@+id/edit_RAM"
+            android:layout_width="222dp"
+            android:layout_height="wrap_content"
+            android:text="RAM" />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp">
+
+        <TextView
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
+            android:layout_width="87dp"
+            android:layout_height="31dp"
+            android:text="Storage" />
+
+        <EditText
+            android:id="@+id/edit_storage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Capacity" />
+
+        <Spinner
+            android:id="@+id/storage_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:entries="@array/storage_unities"
+            android:prompt="@string/storage_prompt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp">
+
+        <TextView
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="31dp"
+            android:text="Processor" />
+
+        <EditText
+            android:id="@+id/edit_processor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Processor" />
+    </LinearLayout>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="SAVE" />
+
+</LinearLayout>
