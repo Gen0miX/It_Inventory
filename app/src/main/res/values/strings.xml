@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Lab3_Ex1</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_filter">Filter</string>
 
     <string name="kb_prompt">Keyboard language</string>
     <string-array name="keyboard_types">
