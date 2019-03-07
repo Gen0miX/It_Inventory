@@ -9,6 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".WorkstationActivity"></activity>
+        <activity android:name=".WorkstationsActivity" />
+        <activity android:name=".EditWorkstationActivity" />
+        <activity android:name=".AddWorkstationActivity" />
+        <activity android:name=".OfficeActivity" />
+        <activity android:name=".EditOfficeActivity" />
+        <activity android:name=".AddOfficeActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
