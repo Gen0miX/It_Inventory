@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void sendMessage(View view) {
-        Intent intent = new Intent(this, EditActivity.class);
+     /*   Intent intent = new Intent(this, EditActivity.class);
         EditText editTextRam = (EditText) findViewById(R.id.edit_RAM);
         EditText editTextStorage = (EditText) findViewById(R.id.edit_storage);
         EditText editTextProcessor = (EditText) findViewById(R.id.edit_processor);
@@ -36,6 +36,6 @@ public class MainActivity extends AppCompatActivity {
         String storage = editTextStorage.getText().toString();
         String processor = editTextProcessor.getText().toString();
         intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
+        startActivity(intent);*/
     }
 }
