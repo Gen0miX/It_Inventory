@@ -8,6 +8,7 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity (tableName = "offices")
 public class OfficeEntity {
     @PrimaryKey (autoGenerate = true)
+    @ColumnInfo (name = "id")
     private long id;
     @ColumnInfo(name = "Floor")
     private int floor;

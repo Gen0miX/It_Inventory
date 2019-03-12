@@ -1,5 +1,6 @@
 package com.example.it_inventory.database.dao;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Query;
 
@@ -9,6 +10,6 @@ import java.util.List;
 
 @Dao
 public interface OfficeDao {
-    @Query("SELECT * FROM OfficeEntity")
-    List<OfficeEntity> getAll();
+    @Query("SELECT * FROM offices")
+    LiveData<List<OfficeEntity>> getAll();
 }

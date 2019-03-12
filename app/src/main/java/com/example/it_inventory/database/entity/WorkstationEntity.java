@@ -1,6 +1,7 @@
 package com.example.it_inventory.database.entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
@@ -22,6 +23,23 @@ public class WorkstationEntity {
     private String processor;
     @ColumnInfo (name = "Keyboard_Type")
     private String keyboardType;
+    @ForeignKey(entity = OfficeEntity.class,
+                parentColumns = "id",
+                childColumns = "officeId")
+    @ColumnInfo(name = "officeId")
+    private long officeId ;
+
+    public WorkstationEntity(boolean screens, boolean portable, String os, int ram, int storage,
+                             String processor, String keyboardType, long officeId ){
+        this.screens = screens ;
+        this.portable = portable ;
+        this.os = os ;
+        this.ram = ram ;
+        this.storage = storage ;
+        this.processor = processor ;
+        this.keyboardType = keyboardType ;
+        this.officeId = officeId ;
+    }
 
     public long getId(){
         return id ;
