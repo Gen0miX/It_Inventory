@@ -4,11 +4,10 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-@Entity
+@Entity (tableName = "workstations")
 public class WorkstationEntity {
-    @PrimaryKey
-    @NonNull
-    private int id ;
+    @PrimaryKey (autoGenerate = true)
+    private long id ;
     @ColumnInfo(name = "Screens")
     private boolean screens;
     @ColumnInfo (name = "Portable")
@@ -24,4 +23,63 @@ public class WorkstationEntity {
     @ColumnInfo (name = "Keyboard_Type")
     private String keyboardType;
 
+    public long getId(){
+        return id ;
+    }
+
+    public boolean isScreens() {
+        return screens;
+    }
+
+    public void setScreens(boolean screens) {
+        this.screens = screens;
+    }
+
+    public boolean isPortable() {
+        return portable;
+    }
+
+    public void setPortable(boolean portable) {
+        this.portable = portable;
+    }
+
+    public String getOs() {
+        return os;
+    }
+
+    public void setOs(String os) {
+        this.os = os;
+    }
+
+    public int getRam() {
+        return ram;
+    }
+
+    public void setRam(int ram) {
+        this.ram = ram;
+    }
+
+    public int getStorage() {
+        return storage;
+    }
+
+    public void setStorage(int storage) {
+        this.storage = storage;
+    }
+
+    public String getProcessor() {
+        return processor;
+    }
+
+    public void setProcessor(String processor) {
+        this.processor = processor;
+    }
+
+    public String getKeyboardType() {
+        return keyboardType;
+    }
+
+    public void setKeyboardType(String keyboardType) {
+        this.keyboardType = keyboardType;
+    }
 }
