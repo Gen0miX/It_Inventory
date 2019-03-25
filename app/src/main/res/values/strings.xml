@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lab3_Ex1</string>
+    <string name="app_name">It Inventory</string>
     <string name="action_delete">Delete</string>
     <string name="action_filter">Filter</string>
 

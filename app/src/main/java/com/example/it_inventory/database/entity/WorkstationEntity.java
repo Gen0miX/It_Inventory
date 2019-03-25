@@ -44,6 +44,10 @@ public class WorkstationEntity {
         return id ;
     }
 
+    public void setId(long id){
+        this.id = id ;
+    }
+
     public boolean isScreens() {
         return screens;
     }
@@ -98,5 +102,12 @@ public class WorkstationEntity {
 
     public void setKeyboardType(String keyboardType) {
         this.keyboardType = keyboardType;
+    }
+
+    public long getOfficeId(){
+        return officeId ;
+    }
+    public void setOfficeId(long officeId){
+        this.officeId = officeId ;
     }
 }
