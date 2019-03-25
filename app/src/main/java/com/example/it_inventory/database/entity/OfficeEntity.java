@@ -23,6 +23,15 @@ public class OfficeEntity {
     @ColumnInfo (name = "IdWorkstation")
     private int idWorkstation;
 
+    public OfficeEntity(int floor, String building, String sector, String city, String country) {
+        this.floor = floor;
+        this.building = building;
+        this.sector = sector;
+        this.city = city;
+        this.country = country;
+        //this.idWorkstation = idWorkstation;
+    }
+
     public long getId() {
         return id;
     }
