@@ -6,6 +6,7 @@ import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -25,6 +26,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     private static final String DATABASE_NAME = "itInventoryDatabase";
 
+    public abstract OfficeDao officeDao();
     public abstract WorkstationDao workstationDao();
 
     private final MutableLiveData<Boolean> isDatabaseCreated = new MutableLiveData<>();
@@ -71,5 +73,4 @@ public abstract class AppDatabase extends RoomDatabase {
     private void setDatabaseCreated(){
         isDatabaseCreated.postValue(true);
     }
-
 }
