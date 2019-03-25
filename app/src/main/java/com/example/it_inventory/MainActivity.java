@@ -27,15 +27,4 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void sendMessage(View view) {
-     /*   Intent intent = new Intent(this, EditActivity.class);
-        EditText editTextRam = (EditText) findViewById(R.id.edit_RAM);
-        EditText editTextStorage = (EditText) findViewById(R.id.edit_storage);
-        EditText editTextProcessor = (EditText) findViewById(R.id.edit_processor);
-        String ram = editTextRam.getText().toString();
-        String storage = editTextStorage.getText().toString();
-        String processor = editTextProcessor.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);*/
-    }
 }
