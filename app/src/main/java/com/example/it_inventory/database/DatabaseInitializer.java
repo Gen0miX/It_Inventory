@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.it_inventory.database.AppDatabase;
+import com.example.it_inventory.database.entity.OfficeEntity;
 import com.example.it_inventory.database.entity.WorkstationEntity;
 
 public class DatabaseInitializer {
@@ -23,11 +24,24 @@ public class DatabaseInitializer {
         db.workstationDao().insert(workstationEntity);
     }
 
-    private static void populateWorkstationData(AppDatabase db) {
+    private static void addOffice (final AppDatabase db, final int floor, final String building, final String sector,
+                                   final String city, final String country) {
+        OfficeEntity officeEntity = new OfficeEntity(floor, building, sector, city, country);
+        db.officeDao().insert(officeEntity);
+    }
+
+    private static void populateDatabaseData(AppDatabase db) {
         db.workstationDao().deleteAll();
 
-        // Methode addWorkstation
+        addOffice(db, 1, "building1", "Marketing", "Sion", "Switzerland");
+        addWorkstation(db, true, false, "Windows 10", 16, 1000, "Intel i7-9700K", "QWERTZ", db.officeDao().getOfficeId(1, "building1"));
+        addWorkstation(db, false, true, "Windows 10", 8, 500, "AMD Ryzen 7 2700X", "QWERTZ", db.officeDao().getOfficeId(1, "building1"));
+        addWorkstation(db, true, true, "Windows 10", 16, 2000, "Intel i7-9700K", "QWERTZ", db.officeDao().getOfficeId(1, "building1"));
+        addWorkstation(db, false, false, "Linux", 16, 1000, "Intel i7-8700", "QWERTY", db.officeDao().getOfficeId(1, "building1"));
 
+        addOffice(db, 2, "building1", "Selling", "Sion", "Switzerland");
+        addWorkstation(db, false, true, "Windows 10", 8, 500, "Intel i5-9600K", "QWERTZ", db.officeDao().getOfficeId(2, "building1"));
+        addWorkstation(db, true, false, "Mac OS", 16, 1000, "Intel i7", "QWERTY", db.officeDao().getOfficeId(2, "building1"));
     }
 
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
@@ -40,7 +54,7 @@ public class DatabaseInitializer {
 
         @Override
         protected Void doInBackground(final Void... params) {
-            populateWorkstationData(database);
+            populateDatabaseData(database);
             return null;
         }
 

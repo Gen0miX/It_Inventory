@@ -5,7 +5,9 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-@Entity (tableName = "workstations")
+@Entity (tableName = "workstations", foreignKeys = @ForeignKey(entity = OfficeEntity.class,
+                                                               parentColumns = "id",
+                                                               childColumns = "officeId"))
 public class WorkstationEntity {
     @PrimaryKey (autoGenerate = true)
     private long id ;
@@ -23,9 +25,6 @@ public class WorkstationEntity {
     private String processor;
     @ColumnInfo (name = "Keyboard_Type")
     private String keyboardType;
-    @ForeignKey(entity = OfficeEntity.class,
-                parentColumns = "id",
-                childColumns = "officeId")
     @ColumnInfo(name = "officeId")
     private long officeId ;
 

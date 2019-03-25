@@ -21,7 +21,8 @@ public class OfficeEntity {
     @ColumnInfo (name = "Country")
     private String country;
     @ColumnInfo (name = "IdWorkstation")
-    private int idWorkstation;
+    private long idWorkstation;
+
 
     public OfficeEntity(int floor, String building, String sector, String city, String country) {
         this.floor = floor;
@@ -29,8 +30,8 @@ public class OfficeEntity {
         this.sector = sector;
         this.city = city;
         this.country = country;
-        //this.idWorkstation = idWorkstation;
     }
+
 
     public long getId() {
         return id;
@@ -76,7 +77,7 @@ public class OfficeEntity {
         this.country = country;
     }
 
-    public int getIdWorkstation() {
+    public long getIdWorkstation() {
         return idWorkstation;
     }
 

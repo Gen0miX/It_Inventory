@@ -26,8 +26,8 @@ public abstract class AppDatabase extends RoomDatabase {
 
     private static final String DATABASE_NAME = "itInventoryDatabase";
 
-    public abstract OfficeDao officeDao();
     public abstract WorkstationDao workstationDao();
+    public abstract OfficeDao officeDao();
 
     private final MutableLiveData<Boolean> isDatabaseCreated = new MutableLiveData<>();
 
