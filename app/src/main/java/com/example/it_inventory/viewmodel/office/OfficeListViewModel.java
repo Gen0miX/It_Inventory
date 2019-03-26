@@ -22,8 +22,6 @@ public class OfficeListViewModel extends AndroidViewModel {
 
     private Application app ;
 
-    private Context context ;
-
     private MediatorLiveData<List<OfficeEntity>> observableOffice ;
 
     public OfficeListViewModel(@NonNull Application app, OfficeRepository officeRepository){

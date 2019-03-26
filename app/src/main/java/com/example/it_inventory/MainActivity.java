@@ -5,23 +5,26 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.widget.Toast;
 
+import com.example.it_inventory.adapter.OfficeAdapter;
 import com.example.it_inventory.database.entity.OfficeEntity;
+import com.example.it_inventory.viewmodel.office.OfficeListViewModel;
 
 
 import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-    // private OfficeListViewModel officeListViewModel;
+     private OfficeListViewModel officeListViewModel;
 
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        setTitle("Bureaux");
+        setTitle("Offices");
         getMenuInflater().inflate(R.menu.main_activity_actions, menu);
         return super.onCreateOptionsMenu(menu);
     }
@@ -30,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        RecyclerView recyclerView = findViewById(R.id.recyclerview_office);
+        final OfficeAdapter adapter = new OfficeAdapter(this);
+        recyclerView.setAdapter(adapter);
 
        // officeListViewModel = ViewModelProviders.of(this).get(officeListViewModel.getClass());
       //  officeListViewModel.getOffices().observe(this, new Observer<List<OfficeEntity>>() {
