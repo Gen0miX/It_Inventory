@@ -1,17 +1,11 @@
 package com.example.it_inventory;
 
 import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.it_inventory.database.entity.OfficeEntity;
