@@ -4,6 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.content.Context;
 
+import com.example.it_inventory.BaseApp;
 import com.example.it_inventory.async.Office.CreateOffice;
 import com.example.it_inventory.async.Office.DeleteOffice;
 import com.example.it_inventory.async.Office.UpdateOffice;
@@ -51,7 +52,7 @@ public class OfficeRepository {
     }
 
 
-    public LiveData<List<OfficeEntity>> getAllOffices (Context context){
-        return AppDatabase.getInstance(context).officeDao().getAll();
+    public LiveData<List<OfficeEntity>> getAllOffices (Application application){
+        return ((BaseApp)application).getDatabase().officeDao().getAll();
     }
 }
