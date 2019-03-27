@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 
 @Entity (tableName = "workstations", foreignKeys = @ForeignKey(entity = OfficeEntity.class,
                                                                parentColumns = "id",
-                                                               childColumns = "officeId"))
+                                                               childColumns = "officeId" , onDelete = ForeignKey.CASCADE))
 public class WorkstationEntity {
     @PrimaryKey (autoGenerate = true)
     private long id ;
