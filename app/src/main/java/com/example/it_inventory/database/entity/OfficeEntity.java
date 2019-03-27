@@ -44,6 +44,8 @@ public class OfficeEntity {
         return floor;
     }
 
+    public String getFloorString(){ return Integer.toString(floor); }
+
     public void setFloor(int floor) {
         this.floor = floor;
     }

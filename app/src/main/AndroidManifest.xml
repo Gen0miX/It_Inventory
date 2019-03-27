@@ -3,19 +3,62 @@
     package="com.example.it_inventory">
 
     <application
+        android:name=".BaseApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WorkstationActivity" />
-        <activity android:name=".WorkstationsActivity" />
-        <activity android:name=".EditWorkstationActivity" />
-        <activity android:name=".AddWorkstationActivity" />
-        <activity android:name=".OfficeActivity" />
-        <activity android:name=".EditOfficeActivity" />
-        <activity android:name=".AddOfficeActivity" />
+        <activity android:name=".WorkstationActivity" >
+        <intent-filter>
+            <action android:name="package.OtherActivity" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+        </activity>
+        <activity android:name=".WorkstationsActivity" >
+        <intent-filter>
+            <action android:name="package.OtherActivity" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+    </activity>
+        <activity android:name=".EditWorkstationActivity" >
+            <intent-filter>
+                <action android:name="package.OtherActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".AddWorkstationActivity">
+            <intent-filter>
+                <action android:name="package.OtherActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".OfficeActivity" >
+            <intent-filter>
+                <action android:name="package.OtherActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".EditOfficeActivity" >
+            <intent-filter>
+                <action android:name="package.OtherActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".AddOfficeActivity" >
+            <intent-filter>
+                <action android:name="package.OtherActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,5 +67,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>
