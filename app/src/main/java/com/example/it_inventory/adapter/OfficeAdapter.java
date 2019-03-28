@@ -80,6 +80,30 @@ public class OfficeAdapter<T> extends RecyclerView.Adapter<OfficeAdapter.OfficeV
         if(this.data == null){
             this.data = offices ;
             notifyItemRangeInserted(0, offices.size()+1);
+        }else{
+            DiffUtil.DiffResult result = DiffUtil.calculateDiff(new DiffUtil.Callback() {
+                @Override
+                public int getOldListSize() {
+                    return data.size();
+                }
+
+                @Override
+                public int getNewListSize() {
+                    return 0;
+                }
+
+                @Override
+                public boolean areItemsTheSame(int i, int i1) {
+                    return false;
+                }
+
+                @Override
+                public boolean areContentsTheSame(int i, int i1) {
+                    return false;
+                }
+            });
+            data = offices ;
+            result.dispatchUpdatesTo(this);
         }
     }
 }

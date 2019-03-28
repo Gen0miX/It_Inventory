@@ -26,6 +26,9 @@ public interface OfficeDao {
     @Delete
     void delete(OfficeEntity officeEntity);
 
+    @Query("SELECT * FROM offices WHERE id = :idOffice")
+    LiveData<OfficeEntity> getOffice(long idOffice);
+
     @Query("SELECT * FROM offices")
     LiveData<List<OfficeEntity>> getAll();
 

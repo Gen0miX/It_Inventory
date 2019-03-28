@@ -3,10 +3,13 @@ package com.example.it_inventory;
 import android.app.Application;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -59,18 +62,41 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                LinearLayoutManager.VERTICAL);
+        recyclerView.addItemDecoration(dividerItemDecoration);
+
         offices = new ArrayList<>();
         adapter = new OfficeAdapter<>(new RecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
                 Log.d(TAG, "Clicked position: "+ position);
                 Log.d(TAG, "Clicked on: "+offices.get(position).getBuilding());
+
+                Intent intent = new Intent(MainActivity.this, OfficeActivity.class);
+                intent.setFlags(
+                        Intent.FLAG_ACTIVITY_NO_ANIMATION |
+                                Intent.FLAG_ACTIVITY_NO_HISTORY
+                );
+                intent.putExtra("officeId", offices.get(position).getId());
+                startActivity(intent);
             }
 
             @Override
             public void onItemLongClick(View v, int position) {
-
+                Log.d(TAG, "longClicked position:" + position);
+                Log.d(TAG, "longClicked on: " + offices.get(position).toString());
             }
+        });
+
+        FloatingActionButton fab = findViewById(R.id.floatingActionAdd);
+        fab.setOnClickListener(view -> {
+                Intent intent = new Intent(MainActivity.this, OfficeActivity.class);
+                intent.setFlags(
+                        Intent.FLAG_ACTIVITY_NO_ANIMATION |
+                                Intent.FLAG_ACTIVITY_NO_HISTORY
+                );
+                startActivity(intent);
         });
 
 
@@ -86,15 +112,6 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(adapter);
 
-
-
-       // officeListViewModel = ViewModelProviders.of(this).get(officeListViewModel.getClass());
-      //  officeListViewModel.getOffices().observe(this, new Observer<List<OfficeEntity>>() {
-     //       @Override
-       //     public void onChanged(@Nullable List<OfficeEntity> officeEntities) {
-     //           Toast.makeText(MainActivity.this, "On changed", Toast.LENGTH_SHORT).show();
-     //       }
-     //   });
     }
 
 }

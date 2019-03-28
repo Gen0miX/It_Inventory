@@ -51,6 +51,9 @@ public class OfficeRepository {
         new DeleteOffice(application, callback).execute(Office);
     }
 
+    public LiveData<OfficeEntity> getOffice(final long officeId, Context context){
+        return AppDatabase.getInstance(context).officeDao().getOffice(officeId);
+    }
 
     public LiveData<List<OfficeEntity>> getAllOffices (Application application){
         return ((BaseApp)application).getDatabase().officeDao().getAll();

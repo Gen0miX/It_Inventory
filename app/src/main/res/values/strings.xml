@@ -3,6 +3,25 @@
     <string name="action_delete">Delete</string>
     <string name="action_filter">Filter</string>
 
+    <string name="officeName">Name : </string>
+    <string name="officeFloor">Floor : </string>
+    <string name="officeSector">Sector : </string>
+    <string name="officeCity">City : </string>
+    <string name="officeCountry">Country : </string>
+
+    <string name="officeNameHint">Name</string>
+    <string name="officeFloorHint">Floor</string>
+    <string name="officeSectorHint">Sector</string>
+    <string name="officeCityHint">City</string>
+    <string name="officeCountryHint">Country</string>
+
+    <string name="action_create_office">Create Office</string>
+    <string name="title_office_details">Office Details</string>
+    <string name="title_office_create">Create Office</string>
+    <string name="action_edited_office">Office Edited</string>
+    <string name="action_create_workstation">Create Workstation</string>
+    <string name="action_error">Something went wrong</string>
+
     <string name="kb_prompt">Keyboard language</string>
     <string-array name="keyboard_types">
         <item>QWERTZ</item>
