@@ -33,7 +33,6 @@ public class OfficeAdapter<T> extends RecyclerView.Adapter<OfficeAdapter.OfficeV
         private final TextView twFloor;
         private final TextView twCity;
         private final TextView twCountry;
-       /* public final LinearLayout linearLayout;*/
 
         private OfficeViewHolder(View view, TextView twName, TextView twFloor, TextView twCity, TextView twCountry) {
             super(view);
@@ -41,7 +40,6 @@ public class OfficeAdapter<T> extends RecyclerView.Adapter<OfficeAdapter.OfficeV
             this.twFloor = twFloor;
             this.twCity = twCity;
             this.twCountry = twCountry;
-            /*this.linearLayout = (LinearLayout) itemView.findViewById(R.id.office_LinearLayout);*/
         }
     }
 
@@ -73,13 +71,6 @@ public class OfficeAdapter<T> extends RecyclerView.Adapter<OfficeAdapter.OfficeV
         holder.twCity.setText(((OfficeEntity) item).getCity());
         holder.twCountry.setText(((OfficeEntity) item).getCountry());
 
-       /* holder.linearLayout.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context,"You clicked "+((OfficeEntity)item).getBuilding(), Toast.LENGTH_LONG).show() ;
-            }
-        });*/
     }
 
     @Override

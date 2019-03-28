@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.KeyListener;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,6 +43,7 @@ public class OfficeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_office);
+
 
         long officeId = getIntent().getLongExtra("officeId", 0);
 
@@ -137,7 +139,7 @@ public class OfficeActivity extends AppCompatActivity {
 
         etName.setFocusable(false);
         etName.setEnabled(false);
-        etFloor.setFocusable(false);
+       etFloor.setFocusable(false);
         etFloor.setEnabled(false);
         etSector.setFocusable(false);
         etSector.setEnabled(false);
@@ -149,14 +151,19 @@ public class OfficeActivity extends AppCompatActivity {
 
     private void switchToEdit(){
         if(!isEditable){
+            etName.setFocusableInTouchMode(true);
             etName.setFocusable(true);
             etName.setEnabled(true);
+            etFloor.setFocusableInTouchMode(true);
             etFloor.setFocusable(true);
             etFloor.setEnabled(true);
+            etSector.setFocusableInTouchMode(true);
             etSector.setFocusable(true);
             etSector.setEnabled(true);
+            etCity.setFocusableInTouchMode(true);
             etCity.setFocusable(true);
             etCity.setEnabled(true);
+            etCountry.setFocusableInTouchMode(true);
             etCountry.setFocusable(true);
             etCountry.setEnabled(true);
         }else{
@@ -167,6 +174,7 @@ public class OfficeActivity extends AppCompatActivity {
                     etCity.getText().toString(),
                     etCountry.getText().toString()
             );
+
             etName.setFocusable(false);
             etName.setEnabled(false);
             etFloor.setFocusable(false);

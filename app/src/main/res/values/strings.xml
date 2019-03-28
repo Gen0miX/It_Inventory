@@ -41,6 +41,7 @@
     </string-array>
 
     <string name="storage_prompt">Keyboard language</string>
+    <string name="officeimage">OfficeImage</string>
     <string-array name="storage_unities">
         <item>TO</item>
         <item>GO</item>
