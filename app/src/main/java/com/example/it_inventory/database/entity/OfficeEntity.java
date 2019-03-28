@@ -2,6 +2,7 @@ package com.example.it_inventory.database.entity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 
@@ -21,6 +22,10 @@ public class OfficeEntity {
     @ColumnInfo (name = "Country")
     private String country;
 
+
+    @Ignore
+    public OfficeEntity(){
+    }
 
 
     public OfficeEntity(int floor, String building, String sector, String city, String country) {

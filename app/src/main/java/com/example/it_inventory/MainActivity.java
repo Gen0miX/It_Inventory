@@ -86,6 +86,14 @@ public class MainActivity extends AppCompatActivity {
             public void onItemLongClick(View v, int position) {
                 Log.d(TAG, "longClicked position:" + position);
                 Log.d(TAG, "longClicked on: " + offices.get(position).toString());
+
+                Intent intent = new Intent(MainActivity.this, OfficeActivity.class);
+                intent.setFlags(
+                        Intent.FLAG_ACTIVITY_NO_ANIMATION |
+                                Intent.FLAG_ACTIVITY_NO_HISTORY
+                );
+                intent.putExtra("officeId", offices.get(position).getId());
+                startActivity(intent);
             }
         });
 

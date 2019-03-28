@@ -70,8 +70,16 @@ public class OfficeViewModel extends AndroidViewModel {
         return observableOffice;
     }
 
-    public void updateClient(OfficeEntity office, OnAsyncEventListener callback){
+    public void updateOffice(OfficeEntity office, OnAsyncEventListener callback){
         repository.update(office, callback, app);
+    }
+
+    public void createOffice(OfficeEntity office, OnAsyncEventListener callback){
+        repository.insert(office, callback, app);
+    }
+
+    public void deleteOffice(OfficeEntity office, OnAsyncEventListener callback){
+        repository.delete(office, callback, app);
     }
 
 }

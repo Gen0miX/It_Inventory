@@ -6,7 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.it_inventory.R;
 import com.example.it_inventory.database.entity.OfficeEntity;
@@ -23,11 +25,15 @@ public class OfficeAdapter<T> extends RecyclerView.Adapter<OfficeAdapter.OfficeV
     private RecyclerViewItemClickListener mylistener;
     private List<T> data;
 
+    private Context context ;
+
+
     static class OfficeViewHolder extends RecyclerView.ViewHolder {
         private final TextView twName;
         private final TextView twFloor;
         private final TextView twCity;
         private final TextView twCountry;
+       /* public final LinearLayout linearLayout;*/
 
         private OfficeViewHolder(View view, TextView twName, TextView twFloor, TextView twCity, TextView twCountry) {
             super(view);
@@ -35,6 +41,7 @@ public class OfficeAdapter<T> extends RecyclerView.Adapter<OfficeAdapter.OfficeV
             this.twFloor = twFloor;
             this.twCity = twCity;
             this.twCountry = twCountry;
+            /*this.linearLayout = (LinearLayout) itemView.findViewById(R.id.office_LinearLayout);*/
         }
     }
 
@@ -65,6 +72,14 @@ public class OfficeAdapter<T> extends RecyclerView.Adapter<OfficeAdapter.OfficeV
         holder.twFloor.setText(((OfficeEntity) item).getFloorString());
         holder.twCity.setText(((OfficeEntity) item).getCity());
         holder.twCountry.setText(((OfficeEntity) item).getCountry());
+
+       /* holder.linearLayout.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context,"You clicked "+((OfficeEntity)item).getBuilding(), Toast.LENGTH_LONG).show() ;
+            }
+        });*/
     }
 
     @Override
