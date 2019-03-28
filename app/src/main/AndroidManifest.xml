@@ -10,14 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WorkstationActivity" >
+        <activity android:name=".ui.workstation.WorkstationActivity" >
         <intent-filter>
             <action android:name="package.OtherActivity" />
 
             <category android:name="android.intent.category.DEFAULT" />
         </intent-filter>
         </activity>
-        <activity android:name=".WorkstationsActivity" >
+        <activity android:name=".ui.workstation.WorkstationsActivity" >
         <intent-filter>
             <action android:name="package.OtherActivity" />
 

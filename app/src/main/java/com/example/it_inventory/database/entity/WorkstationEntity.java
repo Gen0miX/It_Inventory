@@ -29,7 +29,7 @@ public class WorkstationEntity {
     private long officeId ;
 
     public WorkstationEntity(boolean screens, boolean portable, String os, int ram, int storage,
-                             String processor, String keyboardType, long officeId ){
+                              String processor, String keyboardType, long officeId ){
         this.screens = screens ;
         this.portable = portable ;
         this.os = os ;
@@ -76,6 +76,8 @@ public class WorkstationEntity {
         return ram;
     }
 
+    public String getRamString(){ return Integer.toString(ram);}
+
     public void setRam(int ram) {
         this.ram = ram;
     }
@@ -83,6 +85,8 @@ public class WorkstationEntity {
     public int getStorage() {
         return storage;
     }
+
+    public String getStorageString(){return Integer.toString(storage);}
 
     public void setStorage(int storage) {
         this.storage = storage;

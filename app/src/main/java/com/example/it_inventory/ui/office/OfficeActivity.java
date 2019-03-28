@@ -6,7 +6,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.method.KeyListener;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,12 +13,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.it_inventory.R;
-import com.example.it_inventory.WorkstationActivity;
-import com.example.it_inventory.WorkstationsActivity;
-import com.example.it_inventory.adapter.OfficeAdapter;
+import com.example.it_inventory.ui.workstation.WorkstationsActivity;
 import com.example.it_inventory.database.entity.OfficeEntity;
 import com.example.it_inventory.util.OnAsyncEventListener;
-import com.example.it_inventory.viewmodel.office.OfficeListViewModel;
 import com.example.it_inventory.viewmodel.office.OfficeViewModel;
 
 public class OfficeActivity extends AppCompatActivity {

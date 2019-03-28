@@ -1,31 +1,22 @@
 package com.example.it_inventory.adapter;
 
-import android.content.Context;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.it_inventory.R;
 import com.example.it_inventory.database.entity.OfficeEntity;
 import com.example.it_inventory.util.RecyclerViewItemClickListener;
-import com.example.it_inventory.viewmodel.office.OfficeListViewModel;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
-import java.util.Objects;
 
 public class OfficeAdapter<T> extends RecyclerView.Adapter<OfficeAdapter.OfficeViewHolder> {
 
     private RecyclerViewItemClickListener mylistener;
     private List<T> data;
-
-    private Context context ;
 
 
     static class OfficeViewHolder extends RecyclerView.ViewHolder {
@@ -85,7 +76,7 @@ public class OfficeAdapter<T> extends RecyclerView.Adapter<OfficeAdapter.OfficeV
     public void setData(final List<T> offices){
         if(this.data == null){
             this.data = offices ;
-            notifyItemRangeInserted(0, offices.size()+1);
+            notifyItemRangeInserted(0, offices.size());
         }else{
             DiffUtil.DiffResult result = DiffUtil.calculateDiff(new DiffUtil.Callback() {
                 @Override
@@ -95,7 +86,7 @@ public class OfficeAdapter<T> extends RecyclerView.Adapter<OfficeAdapter.OfficeV
 
                 @Override
                 public int getNewListSize() {
-                    return 0;
+                    return offices.size();
                 }
 
                 @Override

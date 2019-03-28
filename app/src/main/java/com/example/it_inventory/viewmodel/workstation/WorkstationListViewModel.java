@@ -10,25 +10,21 @@ import android.support.annotation.NonNull;
 
 import com.example.it_inventory.BaseApp;
 import com.example.it_inventory.database.entity.WorkstationEntity;
-import com.example.it_inventory.database.repository.OfficeRepository;
 import com.example.it_inventory.database.repository.WorkstationRepository;
-import com.example.it_inventory.util.OnAsyncEventListener;
 
 import java.util.List;
 
-
 public class WorkstationListViewModel extends AndroidViewModel {
 
-    private Application app ;
+    private Application app;
 
-    private WorkstationRepository repository ;
+    private WorkstationRepository repository;
 
-    private final MediatorLiveData<List<WorkstationEntity>> observableWorkstations ;
+    private final MediatorLiveData<List<WorkstationEntity>> observableWorkstations;
 
-    public WorkstationListViewModel (@NonNull Application app, final long officeId,
-                                     OfficeRepository officeRepository, WorkstationRepository workstationRepository) {
+    public WorkstationListViewModel(@NonNull Application app, final Long officeId,
+                                    WorkstationRepository workstationRepository){
         super(app);
-
         this.app = app ;
 
         repository = workstationRepository ;
@@ -36,41 +32,35 @@ public class WorkstationListViewModel extends AndroidViewModel {
         observableWorkstations = new MediatorLiveData<>();
         observableWorkstations.setValue(null);
 
-        LiveData<List<WorkstationEntity>> workstations = repository.getWorkstationsByOffice(officeId, app);
+        LiveData<List<WorkstationEntity>> listWorkstationsByOffice =
+                workstationRepository.getWorkstationsByOffice(officeId, app);
 
-        observableWorkstations.addSource(workstations, observableWorkstations::setValue);
+        observableWorkstations.addSource(listWorkstationsByOffice, observableWorkstations::setValue);
     }
 
     public static class Factory extends ViewModelProvider.NewInstanceFactory {
 
         @NonNull
-        private final Application app ;
+        Application app;
 
-        private final long officeId ;
+        private final long officeId;
 
-        private final OfficeRepository officeRepository ;
-
-        private final WorkstationRepository workstationRepository ;
+        private final WorkstationRepository workstationRepository;
 
         public Factory(@NonNull Application app, long officeId){
-            this.app = app ;
-            this.officeId = officeId ;
-            officeRepository = ((BaseApp)app).getOfficeRepository();
+            this.app = app;
+            this.officeId = officeId;
             workstationRepository = ((BaseApp)app).getWorkstationRepository();
         }
 
         @Override
-        public <T extends ViewModel> T create(Class<T> modelClass) {
-            return (T) new WorkstationListViewModel(app, officeId, officeRepository, workstationRepository);
+        public <T extends ViewModel> T create(Class<T> modelClass){
+            return(T) new WorkstationListViewModel(app, officeId, workstationRepository);
         }
     }
 
-    public LiveData<List<WorkstationEntity>> getWorkstationsByOffice() {
+    public LiveData<List<WorkstationEntity>> getWorkstationByOfficeId(){
         return observableWorkstations ;
-    }
-
-    public void deleteWorkstation(WorkstationEntity workstationEntity, OnAsyncEventListener callback){
-        repository.delete(workstationEntity, callback, app);
     }
 
 }

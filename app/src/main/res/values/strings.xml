@@ -5,6 +5,19 @@
     <string name="action_filter">Filter</string>
     <string name="action_edit">Edit</string>
 
+    <string name="workstation_screens">Screens :</string>
+    <string name="workstation_portable">Portable :</string>
+    <string name="workstaion_os">OS :</string>
+    <string name="workstation_ram">RAM :</string>
+    <string name="workstaion_storage">Storage :</string>
+    <string name="workstation_processor">Processor :</string>
+    <string name="workstation_keyboard">Keyboard :</string>
+
+    <string name="workstation_hint_os">OS</string>
+    <string name="workstation_hint_ram">RAM</string>
+    <string name="workstation_hint_storage">Storage</string>
+    <string name="workstation_hint_processor">Processor</string>
+
     <string name="officeName">Name : </string>
     <string name="officeFloor">Floor : </string>
     <string name="officeSector">Sector : </string>
