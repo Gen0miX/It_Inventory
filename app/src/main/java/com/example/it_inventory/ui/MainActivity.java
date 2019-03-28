@@ -1,12 +1,8 @@
-package com.example.it_inventory;
+package com.example.it_inventory.ui;
 
-import android.app.Application;
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
@@ -15,12 +11,12 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
 
+import com.example.it_inventory.R;
 import com.example.it_inventory.adapter.OfficeAdapter;
 import com.example.it_inventory.database.AppDatabase;
 import com.example.it_inventory.database.entity.OfficeEntity;
+import com.example.it_inventory.ui.office.OfficeActivity;
 import com.example.it_inventory.util.RecyclerViewItemClickListener;
 import com.example.it_inventory.viewmodel.office.OfficeListViewModel;
 

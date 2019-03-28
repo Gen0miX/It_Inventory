@@ -29,7 +29,7 @@ public interface OfficeDao {
     @Query("SELECT * FROM offices WHERE id = :idOffice")
     LiveData<OfficeEntity> getOffice(long idOffice);
 
-    @Query("SELECT * FROM offices")
+    @Query("SELECT * FROM offices ORDER BY Building ASC")
     LiveData<List<OfficeEntity>> getAll();
 
     @Query("DELETE FROM offices")

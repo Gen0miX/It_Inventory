@@ -1,6 +1,8 @@
-package com.example.it_inventory;
+package com.example.it_inventory.ui.office;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +13,9 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.it_inventory.R;
+import com.example.it_inventory.WorkstationActivity;
+import com.example.it_inventory.WorkstationsActivity;
 import com.example.it_inventory.adapter.OfficeAdapter;
 import com.example.it_inventory.database.entity.OfficeEntity;
 import com.example.it_inventory.util.OnAsyncEventListener;
@@ -39,6 +44,8 @@ public class OfficeActivity extends AppCompatActivity {
 
     private OfficeEntity office ;
 
+    FloatingActionButton fab ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +65,16 @@ public class OfficeActivity extends AppCompatActivity {
                 office = officeEntity ;
                 updateContent();
             }
+        });
+        fab = findViewById(R.id.floatingActionWorkstation);
+        fab.setOnClickListener(view -> {
+            Intent intent = new Intent(OfficeActivity.this, WorkstationsActivity.class);
+            intent.setFlags(
+                    Intent.FLAG_ACTIVITY_NO_ANIMATION |
+                            Intent.FLAG_ACTIVITY_NO_HISTORY
+            );
+            intent.putExtra("officeId", office.getId());
+            startActivity(intent);
         });
 
         if(officeId != 0){
@@ -151,6 +168,7 @@ public class OfficeActivity extends AppCompatActivity {
 
     private void switchToEdit(){
         if(!isEditable){
+            fab.hide();
             etName.setFocusableInTouchMode(true);
             etName.setFocusable(true);
             etName.setEnabled(true);
@@ -174,7 +192,7 @@ public class OfficeActivity extends AppCompatActivity {
                     etCity.getText().toString(),
                     etCountry.getText().toString()
             );
-
+            fab.hide();
             etName.setFocusable(false);
             etName.setEnabled(false);
             etFloor.setFocusable(false);
