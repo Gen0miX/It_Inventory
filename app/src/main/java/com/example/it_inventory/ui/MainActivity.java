@@ -3,6 +3,7 @@ package com.example.it_inventory.ui;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
@@ -10,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.it_inventory.R;
@@ -19,10 +21,8 @@ import com.example.it_inventory.database.entity.OfficeEntity;
 import com.example.it_inventory.ui.office.OfficeActivity;
 import com.example.it_inventory.ui.workstation.WorkstationsActivity;
 import com.example.it_inventory.util.RecyclerViewItemClickListener;
-import com.example.it_inventory.viewmodel.office.OfficeListViewModel;
-import com.example.it_inventory.viewmodel.office.OfficeMoveViewModel;
-import com.example.it_inventory.viewmodel.office.OfficeViewModel;
-
+import com.example.it_inventory.viewModel.office.OfficeListViewModel;
+import com.example.it_inventory.viewModel.office.OfficeMoveViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +48,26 @@ public class MainActivity extends AppCompatActivity {
         setTitle("Offices");
         getMenuInflater().inflate(R.menu.main_activity_actions, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.Settings) {
+            //Menu item pressed
+           // Toast.makeText(this,"Settings menu was pressed.", Toast.LENGTH_SHORT).show();
+            Intent settings = new Intent(MainActivity.this, Settings.class);
+            startActivity(settings);
+            return true; //Indicated menu press was handled
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

@@ -2,10 +2,10 @@ package com.example.it_inventory.ui.office;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,10 +13,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.it_inventory.R;
-import com.example.it_inventory.ui.workstation.WorkstationsActivity;
 import com.example.it_inventory.database.entity.OfficeEntity;
+import com.example.it_inventory.ui.workstation.WorkstationsActivity;
 import com.example.it_inventory.util.OnAsyncEventListener;
-import com.example.it_inventory.viewmodel.office.OfficeViewModel;
+import com.example.it_inventory.viewModel.office.OfficeViewModel;
 
 public class OfficeActivity extends AppCompatActivity {
 

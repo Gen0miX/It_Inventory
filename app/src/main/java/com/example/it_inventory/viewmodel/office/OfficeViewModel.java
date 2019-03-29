@@ -1,4 +1,4 @@
-package com.example.it_inventory.viewmodel.office;
+package com.example.it_inventory.viewModel.office;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
