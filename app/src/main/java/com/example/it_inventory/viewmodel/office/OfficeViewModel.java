@@ -9,12 +9,9 @@ import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
-import com.example.it_inventory.BaseApp;
 import com.example.it_inventory.database.entity.OfficeEntity;
 import com.example.it_inventory.database.repository.OfficeRepository;
 import com.example.it_inventory.util.OnAsyncEventListener;
-
-import java.util.List;
 
 public class OfficeViewModel extends AndroidViewModel {
 

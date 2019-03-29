@@ -4,7 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.content.Context;
 
-import com.example.it_inventory.BaseApp;
+import com.example.it_inventory.ui.BaseApp;
 import com.example.it_inventory.async.Office.CreateOffice;
 import com.example.it_inventory.async.Office.DeleteOffice;
 import com.example.it_inventory.async.Office.UpdateOffice;

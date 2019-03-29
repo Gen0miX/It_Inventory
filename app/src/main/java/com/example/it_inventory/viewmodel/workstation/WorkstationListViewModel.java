@@ -8,7 +8,7 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 
-import com.example.it_inventory.BaseApp;
+import com.example.it_inventory.ui.BaseApp;
 import com.example.it_inventory.database.entity.WorkstationEntity;
 import com.example.it_inventory.database.repository.WorkstationRepository;
 

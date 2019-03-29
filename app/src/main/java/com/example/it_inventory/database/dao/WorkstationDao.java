@@ -30,6 +30,9 @@ public interface WorkstationDao {
     @Query("DELETE FROM workstations")
     void deleteAll();
 
+    @Query("SELECT * FROM workstations WHERE id = :workstationId")
+    LiveData<WorkstationEntity> getWorkstation(long workstationId);
+
     @Query("SELECT * FROM workstations WHERE officeId = :officeId")
     LiveData<List<WorkstationEntity>> getWorkstationsByOfficeId(long officeId);
 }

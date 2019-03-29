@@ -46,18 +46,7 @@
         <item>Colemak</item>
     </string-array>
 
-    <string name="os_prompt">Keyboard language</string>
-    <string-array name="os_types">
-        <item>Windows</item>
-        <item>MAC OS</item>
-        <item>Linux</item>
-    </string-array>
-
-    <string name="storage_prompt">Keyboard language</string>
     <string name="officeimage">OfficeImage</string>
-    <string-array name="storage_unities">
-        <item>TO</item>
-        <item>GO</item>
-    </string-array>
+
 
 </resources>

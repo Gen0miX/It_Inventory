@@ -4,7 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.content.Context;
 
-import com.example.it_inventory.BaseApp;
+import com.example.it_inventory.ui.BaseApp;
 import com.example.it_inventory.async.Workstation.CreateWorkstation;
 import com.example.it_inventory.async.Workstation.DeleteWorkstation;
 import com.example.it_inventory.async.Workstation.UpdateWorkstation;
@@ -53,6 +53,10 @@ public class WorkstationRepository {
 
     public LiveData<List<WorkstationEntity>> getAllWorkstations (Context context){
         return AppDatabase.getInstance(context).workstationDao().getAll();
+    }
+
+    public LiveData<WorkstationEntity> getWorkstation(final long workstationId, Context context){
+        return AppDatabase.getInstance(context).workstationDao().getWorkstation(workstationId);
     }
 
     public LiveData<List<WorkstationEntity>> getWorkstationsByOffice(final long officeId, Application application){

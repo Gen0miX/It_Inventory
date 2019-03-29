@@ -6,15 +6,13 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MediatorLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
-import android.content.Context;
 import android.support.annotation.NonNull;
 
-import com.example.it_inventory.BaseApp;
+import com.example.it_inventory.ui.BaseApp;
 import com.example.it_inventory.database.entity.OfficeEntity;
 import com.example.it_inventory.database.repository.OfficeRepository;
 
 import java.util.List;
-import java.util.Objects;
 
 public class OfficeListViewModel extends AndroidViewModel {
 

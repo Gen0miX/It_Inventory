@@ -3,7 +3,7 @@ package com.example.it_inventory.async.Workstation;
 import android.app.Application;
 import android.os.AsyncTask;
 
-import com.example.it_inventory.BaseApp;
+import com.example.it_inventory.ui.BaseApp;
 import com.example.it_inventory.database.entity.WorkstationEntity;
 import com.example.it_inventory.util.OnAsyncEventListener;
 

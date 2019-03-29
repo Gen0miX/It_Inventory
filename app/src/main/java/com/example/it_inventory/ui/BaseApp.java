@@ -1,4 +1,4 @@
-package com.example.it_inventory;
+package com.example.it_inventory.ui;
 
 /**
  * Author: Samuel Pinto Da Silva

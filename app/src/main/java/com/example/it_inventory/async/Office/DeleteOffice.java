@@ -3,7 +3,7 @@ package com.example.it_inventory.async.Office;
 import android.app.Application;
 import android.os.AsyncTask;
 
-import com.example.it_inventory.BaseApp;
+import com.example.it_inventory.ui.BaseApp;
 import com.example.it_inventory.database.entity.OfficeEntity;
 import com.example.it_inventory.util.OnAsyncEventListener;
 /**
