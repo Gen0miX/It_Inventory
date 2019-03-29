@@ -67,6 +67,7 @@ public class OfficeViewModel extends AndroidViewModel {
         return observableOffice;
     }
 
+
     public void updateOffice(OfficeEntity office, OnAsyncEventListener callback){
         repository.update(office, callback, app);
     }

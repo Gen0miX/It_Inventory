@@ -1,6 +1,7 @@
 package com.example.it_inventory.ui.workstation;
 
 import android.arch.lifecycle.ViewModelProviders;
+
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -8,17 +9,19 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.it_inventory.R;
-import com.example.it_inventory.async.Office.CreateOffice;
+
 import com.example.it_inventory.database.entity.WorkstationEntity;
+import com.example.it_inventory.ui.MainActivity;
 import com.example.it_inventory.util.OnAsyncEventListener;
 import com.example.it_inventory.viewmodel.workstation.WorkstationViewModel;
 
@@ -42,7 +45,7 @@ public class WorkstationActivity extends AppCompatActivity {
     private EditText etStorage;
     private EditText etProcessor;
     private Spinner spKeyboard;
-   /* private TextView twKeyboard;*/
+    private TextView twKeyboard;
 
     private boolean isEditable;
 
@@ -135,6 +138,15 @@ public class WorkstationActivity extends AppCompatActivity {
                                 etProcessor.getText().toString(),
                                 spKeyboard.getSelectedItem().toString());
         }
+        if(item.getItemId() == MOVE_WORKSTATION){
+               Intent intent = new Intent(WorkstationActivity.this, MainActivity.class);
+                intent.setFlags(
+                        Intent.FLAG_ACTIVITY_NO_ANIMATION
+                );
+                intent.putExtra("workstationId", workstation.getId());
+                intent.putExtra("officeId", workstation.getOfficeId());
+                startActivity(intent);
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -147,22 +159,27 @@ public class WorkstationActivity extends AppCompatActivity {
         etStorage = findViewById(R.id.etStorage);
         etProcessor = findViewById(R.id.etProcessor);
         spKeyboard = findViewById(R.id.spKeyboard);
-        /*twKeyboard = findViewById(R.id.twKeyboard);*/
+        twKeyboard = findViewById(R.id.twKeyboard);
 
         swScreens.setFocusable(false);
         swScreens.setClickable(false);
         swPortable.setFocusable(false);
         swPortable.setClickable(false);
+        etOs.setFocusableInTouchMode(false);
         etOs.setFocusable(false);
         etOs.setEnabled(false);
+        etRam.setFocusableInTouchMode(false);
         etRam.setFocusable(false);
         etRam.setEnabled(false);
+        etStorage.setFocusableInTouchMode(false);
         etStorage.setFocusable(false);
         etStorage.setEnabled(false);
+        etProcessor.setFocusableInTouchMode(false);
         etProcessor.setFocusable(false);
         etProcessor.setEnabled(false);
         spKeyboard.setEnabled(false);
         spKeyboard.setClickable(false);
+        spKeyboard.setVisibility(View.INVISIBLE);
     }
 
     private void switchToEdit(){
@@ -171,17 +188,22 @@ public class WorkstationActivity extends AppCompatActivity {
             swScreens.setClickable(true);
             swPortable.setFocusable(true);
             swPortable.setClickable(true);
+            etOs.setFocusableInTouchMode(true);
             etOs.setFocusable(true);
             etOs.setEnabled(true);
+            etRam.setFocusableInTouchMode(true);
             etRam.setFocusable(true);
             etRam.setEnabled(true);
+            etStorage.setFocusableInTouchMode(true);
             etStorage.setFocusable(true);
             etStorage.setEnabled(true);
+            etProcessor.setFocusableInTouchMode(true);
             etProcessor.setFocusable(true);
             etProcessor.setEnabled(true);
+            spKeyboard.setVisibility(View.VISIBLE);
             spKeyboard.setEnabled(true);
             spKeyboard.setClickable(true);
-            /*twKeyboard.setVisibility(View.INVISIBLE);*/
+            twKeyboard.setVisibility(View.INVISIBLE);
         }else{
             saveChanges(
                         swScreens.isChecked(), swPortable.isChecked(),
@@ -191,21 +213,26 @@ public class WorkstationActivity extends AppCompatActivity {
                         etProcessor.getText().toString(),
                         spKeyboard.getSelectedItem().toString()
             );
-                swScreens.setFocusable(false);
-                swScreens.setClickable(false);
-                swPortable.setFocusable(false);
-                swPortable.setClickable(false);
-                etOs.setFocusable(false);
-                etOs.setEnabled(false);
-                etRam.setFocusable(false);
-                etRam.setEnabled(false);
-                etStorage.setFocusable(false);
-                etStorage.setEnabled(false);
-                etProcessor.setFocusable(false);
-                etProcessor.setEnabled(false);
-                spKeyboard.setEnabled(false);
-                spKeyboard.setClickable(false);
-               /* twKeyboard.setVisibility(View.VISIBLE);*/
+            swScreens.setFocusable(false);
+            swScreens.setClickable(false);
+            swPortable.setFocusable(false);
+            swPortable.setClickable(false);
+            etOs.setFocusableInTouchMode(false);
+            etOs.setFocusable(false);
+            etOs.setEnabled(false);
+            etRam.setFocusableInTouchMode(false);
+            etRam.setFocusable(false);
+            etRam.setEnabled(false);
+            etStorage.setFocusableInTouchMode(false);
+            etStorage.setFocusable(false);
+            etStorage.setEnabled(false);
+            etProcessor.setFocusableInTouchMode(false);
+            etProcessor.setFocusable(false);
+            etProcessor.setEnabled(false);
+            spKeyboard.setEnabled(false);
+            spKeyboard.setClickable(false);
+                spKeyboard.setVisibility(View.INVISIBLE);
+                twKeyboard.setVisibility(View.VISIBLE);
             }
             isEditable = !isEditable;
     }
@@ -280,7 +307,7 @@ public class WorkstationActivity extends AppCompatActivity {
             etRam.setText(workstation.getRamString());
             etStorage.setText(workstation.getStorageString());
             etProcessor.setText(workstation.getProcessor());
-            /*twKeyboard.setText(workstation.getKeyboardType());*/
+            twKeyboard.setText(workstation.getKeyboardType());
 
         }
     }

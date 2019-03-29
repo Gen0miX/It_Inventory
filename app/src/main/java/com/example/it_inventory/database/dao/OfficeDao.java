@@ -37,4 +37,7 @@ public interface OfficeDao {
 
     @Query("SELECT id FROM offices WHERE Floor = :floor AND Building = :building")
     long getOfficeId(int floor, String building);
+
+    @Query("SELECT * FROM offices WHERE id != :officeId")
+    LiveData<List<OfficeEntity>> getOfficesMove(long officeId);
 }

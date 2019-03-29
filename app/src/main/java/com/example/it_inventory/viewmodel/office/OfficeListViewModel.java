@@ -36,7 +36,6 @@ public class OfficeListViewModel extends AndroidViewModel {
         LiveData<List<OfficeEntity>> offices = repository.getAllOffices(app);
 
         observableOffice.addSource(offices, observableOffice::setValue);
-
     }
 
     public static class Factory extends ViewModelProvider.NewInstanceFactory {

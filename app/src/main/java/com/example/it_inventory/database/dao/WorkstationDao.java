@@ -35,4 +35,7 @@ public interface WorkstationDao {
 
     @Query("SELECT * FROM workstations WHERE officeId = :officeId")
     LiveData<List<WorkstationEntity>> getWorkstationsByOfficeId(long officeId);
+
+    @Query("UPDATE workstations SET officeId = :officeId WHERE id=:workstationId")
+    void updateWorkstation(long officeId, long workstationId);
 }

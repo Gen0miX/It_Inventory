@@ -58,4 +58,9 @@ public class OfficeRepository {
     public LiveData<List<OfficeEntity>> getAllOffices (Application application){
         return ((BaseApp)application).getDatabase().officeDao().getAll();
     }
+
+    public LiveData<List<OfficeEntity>> getOfficesMove(long officeId, Application app){
+        return ((BaseApp)app).getDatabase().officeDao().getOfficesMove(officeId);
+    }
+
 }

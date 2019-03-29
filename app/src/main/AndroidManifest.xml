@@ -10,19 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.workstation.WorkstationActivity" >
+        <activity android:name=".ui.workstation.WorkstationActivity"
+                  android:parentActivityName=".ui.workstation.WorkstationsActivity">
         </activity>
-        <activity android:name=".ui.workstation.WorkstationsActivity" >
+        <activity android:name=".ui.workstation.WorkstationsActivity"
+                  android:parentActivityName=".ui.office.OfficeActivity">
     </activity>
-        <activity android:name=".EditWorkstationActivity" >
-        </activity>
-        <activity android:name=".AddWorkstationActivity">
-        </activity>
-        <activity android:name=".ui.office.OfficeActivity" >
-        </activity>
-        <activity android:name=".EditOfficeActivity" >
-        </activity>
-        <activity android:name=".AddOfficeActivity" >
+        <activity android:name=".ui.office.OfficeActivity"
+                  android:parentActivityName=".ui.MainActivity">
         </activity>
         <activity android:name=".ui.MainActivity">
             <intent-filter>

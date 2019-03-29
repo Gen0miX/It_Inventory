@@ -63,12 +63,10 @@ public class OfficeActivity extends AppCompatActivity {
         fab.setOnClickListener(view -> {
             Intent intent = new Intent(OfficeActivity.this, WorkstationsActivity.class);
             intent.setFlags(
-                    Intent.FLAG_ACTIVITY_NO_ANIMATION |
-                            Intent.FLAG_ACTIVITY_NO_HISTORY
+                    Intent.FLAG_ACTIVITY_NO_ANIMATION
             );
             intent.putExtra("officeId", office.getId());
             startActivity(intent);
-            onPause();
         });
 
         if(officeId != 0){
