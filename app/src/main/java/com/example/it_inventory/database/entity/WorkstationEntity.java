@@ -4,12 +4,14 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
-import android.support.annotation.NonNull;
 
+// attribution of a foreignkey --> link with the offices
 @Entity (tableName = "workstations", foreignKeys = @ForeignKey(entity = OfficeEntity.class,
                                                                parentColumns = "id",
                                                                childColumns = "officeId" , onDelete = ForeignKey.CASCADE))
 public class WorkstationEntity {
+
+    // Workstation parameters
     @PrimaryKey (autoGenerate = true)
     private long id ;
     @ColumnInfo(name = "Screens")
@@ -29,10 +31,13 @@ public class WorkstationEntity {
     @ColumnInfo(name = "officeId")
     private long officeId ;
 
+
+    // Constructor by default : ignored
     @Ignore
     public WorkstationEntity(){
     }
 
+    // WorkstationEntity: constructor
     public WorkstationEntity(boolean screens, boolean portable, String os, int ram, int storage,
                               String processor, String keyboardType, long officeId ){
         this.screens = screens ;
@@ -45,6 +50,7 @@ public class WorkstationEntity {
         this.officeId = officeId ;
     }
 
+    // Getters and setters
     public long getId(){
         return id ;
     }

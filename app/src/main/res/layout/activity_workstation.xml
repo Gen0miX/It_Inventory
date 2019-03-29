@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".ui.workstation.WorkstationActivity" >
 
+    <!-- Workstation : logo -->
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
@@ -17,6 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- TextView : Portable -->
         <TextView
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
@@ -29,6 +31,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- TextView : Screens -->
         <TextView
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
@@ -41,6 +44,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Input : Screens -->
         <Switch
             android:id="@+id/swScreens"
             android:layout_width="wrap_content"
@@ -49,6 +53,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
+        <!-- Input : Portable -->
         <Switch
             android:id="@+id/swPortable"
             android:layout_width="wrap_content"
@@ -57,6 +62,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
+        <!-- TextView : OS -->
         <TextView
             android:id="@+id/textView16"
             android:layout_width="wrap_content"
@@ -69,6 +75,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/swScreens" />
 
+        <!-- Input : OS -->
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputLayout6"
             android:layout_width="0dp"
@@ -87,6 +94,7 @@
                 android:hint="@string/workstation_hint_os" />
         </android.support.design.widget.TextInputLayout>
 
+        <!-- TextView : RAM -->
         <TextView
             android:id="@+id/textView17"
             android:layout_width="wrap_content"
@@ -99,6 +107,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
+        <!-- Input : RAM -->
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputLayout7"
             android:layout_width="0dp"
@@ -118,6 +127,7 @@
                 android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
 
+        <!-- TextView : Storage -->
         <TextView
             android:id="@+id/textView18"
             android:layout_width="wrap_content"
@@ -130,6 +140,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
+        <!-- Input : storage -->
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputLayout8"
             android:layout_width="0dp"
@@ -149,6 +160,7 @@
                 android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
 
+        <!-- TextView : Storage (type) -->
         <TextView
             android:id="@+id/textView21"
             android:layout_width="wrap_content"
@@ -161,6 +173,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
+        <!-- TextView : Processor -->
         <TextView
             android:id="@+id/textView22"
             android:layout_width="wrap_content"
@@ -173,6 +186,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
+        <!-- Input : Processor -->
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputLayout9"
             android:layout_width="0dp"
@@ -191,6 +205,7 @@
                 android:hint="@string/workstation_hint_processor" />
         </android.support.design.widget.TextInputLayout>
 
+        <!-- Input : keyboard -->
         <TextView
             android:id="@+id/textView24"
             android:layout_width="wrap_content"
@@ -203,6 +218,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
+        <!-- input : keyboard -->
         <Spinner
             android:id="@+id/spKeyboard"
             android:layout_width="0dp"
