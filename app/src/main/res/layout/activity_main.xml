@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
-
+<!-- List of the offices-->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview_office"
         android:layout_width="0dp"
@@ -21,6 +21,7 @@
 
     </android.support.v7.widget.RecyclerView>
 
+    <!-- Button "add" -->
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionAddOffice"
         android:layout_width="56dp"
