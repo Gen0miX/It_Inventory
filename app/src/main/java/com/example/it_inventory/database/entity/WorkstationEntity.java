@@ -2,6 +2,7 @@ package com.example.it_inventory.database.entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
@@ -27,6 +28,10 @@ public class WorkstationEntity {
     private String keyboardType;
     @ColumnInfo(name = "officeId")
     private long officeId ;
+
+    @Ignore
+    public WorkstationEntity(){
+    }
 
     public WorkstationEntity(boolean screens, boolean portable, String os, int ram, int storage,
                               String processor, String keyboardType, long officeId ){

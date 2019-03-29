@@ -73,6 +73,7 @@ public class WorkstationsActivity extends AppCompatActivity {
                 );
                 intent.putExtra("workstationId", workstations.get(position).getId());
                 startActivity(intent);
+                onPause();
             }
         });
 

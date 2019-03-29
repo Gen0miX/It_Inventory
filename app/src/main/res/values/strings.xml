@@ -4,6 +4,10 @@
     <string name="action_cancel">Cancel</string>
     <string name="action_filter">Filter</string>
     <string name="action_edit">Edit</string>
+    <string name="action_move">Move</string>
+
+    <string name="message_delete_office">Do you really want to delete this office ?</string>
+    <string name="message_delete_workstation">Do you really want to delete this workstation ?</string>
 
     <string name="workstation_screens">Screens :</string>
     <string name="workstation_portable">Portable :</string>
@@ -35,10 +39,12 @@
     <string name="title_office_create">Create Office</string>
     <string name="action_edited_office">Office Edited</string>
     <string name="action_create_workstation">Create Workstation</string>
-    <string name="action_error">Something went wrong</string>
+    <string name="action_edited_workstation">Workstation Edited</string>
+    <string name="action_error_office">Office not edited</string>
+    <string name="action_error_workstation">Workstation not edited</string>
 
     <string name="kb_prompt">Keyboard language</string>
-    <string-array name="keyboard_types">
+    <string-array name="keyboard_array">
         <item>QWERTZ</item>
         <item>QWERTY</item>
         <item>AZERTY</item>
@@ -47,6 +53,5 @@
     </string-array>
 
     <string name="officeimage">OfficeImage</string>
-
 
 </resources>

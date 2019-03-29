@@ -11,53 +11,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.workstation.WorkstationActivity" >
-        <intent-filter>
-            <action android:name="package.OtherActivity" />
-
-            <category android:name="android.intent.category.DEFAULT" />
-        </intent-filter>
         </activity>
         <activity android:name=".ui.workstation.WorkstationsActivity" >
-        <intent-filter>
-            <action android:name="package.OtherActivity" />
-
-            <category android:name="android.intent.category.DEFAULT" />
-        </intent-filter>
     </activity>
         <activity android:name=".EditWorkstationActivity" >
-            <intent-filter>
-                <action android:name="package.OtherActivity" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
         </activity>
         <activity android:name=".AddWorkstationActivity">
-            <intent-filter>
-                <action android:name="package.OtherActivity" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui.office.OfficeActivity" >
-            <intent-filter>
-                <action android:name="package.OtherActivity" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
         </activity>
         <activity android:name=".EditOfficeActivity" >
-            <intent-filter>
-                <action android:name="package.OtherActivity" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
         </activity>
         <activity android:name=".AddOfficeActivity" >
-            <intent-filter>
-                <action android:name="package.OtherActivity" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui.MainActivity">
             <intent-filter>

@@ -47,13 +47,10 @@ public class OfficeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_office);
 
-
         long officeId = getIntent().getLongExtra("officeId", 0);
-
 
         initiateView();
 
-        //Possible que conversion de marche pas
         OfficeViewModel.Factory factory = new OfficeViewModel.Factory(getApplication(), officeId);
         viewModel = ViewModelProviders.of(this, factory).get(OfficeViewModel.class);
         viewModel.getOffice().observe(this, officeEntity -> {
@@ -71,6 +68,7 @@ public class OfficeActivity extends AppCompatActivity {
             );
             intent.putExtra("officeId", office.getId());
             startActivity(intent);
+            onPause();
         });
 
         if(officeId != 0){
@@ -82,6 +80,7 @@ public class OfficeActivity extends AppCompatActivity {
 
     }
 
+    @Override
     public boolean onCreateOptionsMenu(Menu menu){
         if(office != null){
             menu.add(0, EDIT_OFFICE, Menu.NONE, getString(R.string.action_edit))
@@ -92,7 +91,7 @@ public class OfficeActivity extends AppCompatActivity {
                     .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         }else{
             menu.add(0, CREATE_OFFICE, Menu.NONE, getString(R.string.action_create_office))
-                    .setIcon(R.drawable.ic_white_add)
+                    .setIcon(R.drawable.ic_add_white)
                     .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         }
         return true;
@@ -113,7 +112,7 @@ public class OfficeActivity extends AppCompatActivity {
             final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
             alertDialog.setTitle(getString(R.string.action_delete));
             alertDialog.setCancelable(false);
-            alertDialog.setMessage("Do you really want to delete this office ?");
+            alertDialog.setMessage(getString(R.string.message_delete_office));
             alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.action_delete), (dialog, which) -> {
                 viewModel.deleteOffice(office, new OnAsyncEventListener(){
 
@@ -152,7 +151,7 @@ public class OfficeActivity extends AppCompatActivity {
 
         etName.setFocusable(false);
         etName.setEnabled(false);
-       etFloor.setFocusable(false);
+        etFloor.setFocusable(false);
         etFloor.setEnabled(false);
         etSector.setFocusable(false);
         etSector.setEnabled(false);
@@ -243,7 +242,9 @@ public class OfficeActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Exception e) {
-
+                Log.d(TAG, "UpdateOffice: Failure", e);
+                setResponse(false);
+                onBackPressed();
             }
         });
     }
@@ -253,7 +254,7 @@ public class OfficeActivity extends AppCompatActivity {
             toast = Toast.makeText(this, getString(R.string.action_edited_office), Toast.LENGTH_LONG);
             toast.show();
         } else {
-            toast = Toast.makeText(this, getString(R.string.action_error), Toast.LENGTH_LONG);
+            toast = Toast.makeText(this, getString(R.string.action_error_office), Toast.LENGTH_LONG);
             toast.show();
         }
     }
