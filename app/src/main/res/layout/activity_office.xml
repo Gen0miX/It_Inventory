@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:layout_margin="0dp"
     android:orientation="vertical"
-    tools:context=".ui.office.OfficeActivity">
+    tools:context=".ui.office.OfficeActivity"
+    android:background="?attr/backgroudcolor">
 
     <ImageView
         android:id="@+id/imageView"
@@ -27,6 +28,7 @@
             android:text="@string/officeName"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,6 +39,7 @@
             android:layout_marginStart="31dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
+            android:textColorHint="?attr/textcolor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView3"
             app:layout_constraintTop_toTopOf="parent">
@@ -46,6 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/officeNameHint"
+                android:textColor="?attr/textcolor"
                 android:inputType="textPersonName" />
         </android.support.design.widget.TextInputLayout>
 
@@ -57,6 +61,7 @@
             android:text="@string/officeFloor"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -67,6 +72,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:textColorHint="?attr/textcolor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView4"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
@@ -76,6 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/officeFloorHint"
+                android:textColor="?attr/textcolor"
                 android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
 
@@ -87,6 +94,7 @@
             android:text="@string/officeSector"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -97,6 +105,7 @@
             android:layout_marginStart="23dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:textColorHint="?attr/textcolor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView5"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
@@ -106,6 +115,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/officeSectorHint"
+                android:textColor="?attr/textcolor"
                 android:inputType="text" />
         </android.support.design.widget.TextInputLayout>
 
@@ -117,6 +127,7 @@
             android:text="@string/officeCity"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -127,6 +138,7 @@
             android:layout_marginStart="51dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:textColorHint="?attr/textcolor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView6"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
@@ -136,6 +148,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/officeCityHint"
+                android:textColor="?attr/textcolor"
                 android:inputType="text" />
         </android.support.design.widget.TextInputLayout>
 
@@ -147,6 +160,7 @@
             android:text="@string/officeCountry"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -157,6 +171,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:textColorHint="?attr/textcolor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView7"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
@@ -166,6 +181,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/officeCountryHint"
+                android:textColor="?attr/textcolor"
                 android:inputType="text" />
         </android.support.design.widget.TextInputLayout>
 

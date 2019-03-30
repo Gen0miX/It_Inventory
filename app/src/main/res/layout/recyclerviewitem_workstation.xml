@@ -18,6 +18,7 @@
             android:text="Workstation"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,6 +30,7 @@
             android:layout_marginTop="6dp"
             android:text="@string/workstation_screens"
             android:textStyle="bold"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/workstation_name" />
 
@@ -48,6 +50,7 @@
             android:layout_marginTop="6dp"
             android:text="@string/workstation_portable"
             android:textStyle="bold"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toEndOf="@+id/textView10"
             app:layout_constraintTop_toBottomOf="@+id/workstation_name" />
 
@@ -67,6 +70,7 @@
             android:layout_marginTop="8dp"
             android:text="@string/workstaion_os"
             android:textStyle="bold"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/workstation_switch_screen" />
 
@@ -78,6 +82,7 @@
             android:layout_marginTop="8dp"
             android:text="@string/workstation_ram"
             android:textStyle="bold"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
@@ -88,6 +93,7 @@
             android:layout_marginStart="52dp"
             android:layout_marginTop="8dp"
             android:text="os"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toEndOf="@+id/textView14"
             app:layout_constraintTop_toBottomOf="@+id/workstation_switch_screen" />
 
@@ -98,6 +104,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="8dp"
             android:text="RAM"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toEndOf="@+id/textView15"
             app:layout_constraintTop_toBottomOf="@+id/workstation_os" />
 
@@ -109,6 +116,7 @@
             android:layout_marginTop="8dp"
             android:text="@string/workstaion_storage"
             android:textStyle="bold"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
@@ -119,6 +127,7 @@
             android:layout_marginStart="22dp"
             android:layout_marginTop="8dp"
             android:text="Storage"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toEndOf="@+id/textView20"
             app:layout_constraintTop_toBottomOf="@+id/workstation_ram" />
 
@@ -129,6 +138,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="GO"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toEndOf="@+id/workstation_storage"
             app:layout_constraintTop_toBottomOf="@+id/workstation_ram" />
 
@@ -140,6 +150,7 @@
             android:layout_marginTop="8dp"
             android:text="@string/workstation_processor"
             android:textStyle="bold"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
@@ -150,6 +161,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="Processor"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toEndOf="@+id/textView23"
             app:layout_constraintTop_toBottomOf="@+id/workstation_storage" />
 
@@ -161,6 +173,7 @@
             android:layout_marginTop="8dp"
             android:text="@string/workstation_keyboard"
             android:textStyle="bold"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
@@ -171,6 +184,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="8dp"
             android:text="Keyboard"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toEndOf="@+id/textView25"
             app:layout_constraintTop_toBottomOf="@+id/workstation_processor" />
 
