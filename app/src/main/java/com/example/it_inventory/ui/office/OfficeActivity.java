@@ -46,13 +46,16 @@ public class OfficeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        // Check the theme
         if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)
         {
+            // set darkTheme if the button is checked
             setTheme(R.style.DarkTheme);
         }
         else
+            // set darkTheme if the button isn't checked
             setTheme(R.style.AppTheme);
-        
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_office);
 

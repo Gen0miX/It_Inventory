@@ -4,11 +4,13 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
-import android.support.annotation.NonNull;
 
+// If we delete the office, we delete all the workstation in it.
 @Entity (tableName = "workstations", foreignKeys = @ForeignKey(entity = OfficeEntity.class,
                                                                parentColumns = "id",
                                                                childColumns = "officeId" , onDelete = ForeignKey.CASCADE))
+
+// Workstation Entity : parameters
 public class WorkstationEntity {
     @PrimaryKey (autoGenerate = true)
     private long id ;
@@ -29,10 +31,12 @@ public class WorkstationEntity {
     @ColumnInfo(name = "officeId")
     private long officeId ;
 
+    // Constructor by default : ignored
     @Ignore
     public WorkstationEntity(){
     }
 
+    // Constructor
     public WorkstationEntity(boolean screens, boolean portable, String os, int ram, int storage,
                               String processor, String keyboardType, long officeId ){
         this.screens = screens ;
@@ -45,6 +49,7 @@ public class WorkstationEntity {
         this.officeId = officeId ;
     }
 
+    // getters and setters
     public long getId(){
         return id ;
     }
