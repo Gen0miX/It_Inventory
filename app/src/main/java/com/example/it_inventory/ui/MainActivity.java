@@ -72,28 +72,11 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-
-
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-
-
-       /* //noinspection SimplifiableIfStatement
-        if (item.getItemId() == R.id.settings) {
-            //Menu item pressed
-           // Toast.makeText(this,"MySettings menu was pressed.", Toast.LENGTH_SHORT).show();
-            Intent settings = new Intent(MainActivity.this, Settings.class);
-            startActivity(settings);
-            return true; //Indicated menu press was handled
-        }
-
-        return super.onOptionsItemSelected(item);*/
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        //DarkTheme
         if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)
             setTheme(R.style.DarkTheme);
         else
@@ -105,7 +88,9 @@ public class MainActivity extends AppCompatActivity {
         officeId = getIntent().getLongExtra("officeId", 0);
         workstationId = getIntent().getLongExtra("workstationId", 0);
 
+        //Create the MainActivity with all the offices
         if(officeId == 0){
+            //Initialize Database and datas
             initializeDemoData(AppDatabase.getInstance(this));
             RecyclerView recyclerView = findViewById(R.id.recyclerview_office);
 
@@ -116,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                     LinearLayoutManager.VERTICAL);
             recyclerView.addItemDecoration(dividerItemDecoration);
 
+            //Handle itemClick and start a new activity
             offices = new ArrayList<>();
             adapter = new OfficeAdapter<>(new RecyclerViewItemClickListener() {
                 @Override
@@ -150,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-
+            //Create floatingButton for adding new Offices
             FloatingActionButton fab = findViewById(R.id.floatingActionAddOffice);
             fab.setOnClickListener(view -> {
                 Intent intent = new Intent(MainActivity.this, OfficeActivity.class);
@@ -162,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
             });
 
 
-
+            //Get the offices in the database by calling the ViewModel
             OfficeListViewModel.Factory factory = new OfficeListViewModel.Factory(getApplication());
             officeListViewModel = ViewModelProviders.of(this, factory).get(OfficeListViewModel.class);
             officeListViewModel.getOffices().observe(this, officeEntities -> {
@@ -185,6 +171,7 @@ public class MainActivity extends AppCompatActivity {
                     LinearLayoutManager.VERTICAL);
             recyclerView.addItemDecoration(dividerItemDecoration);
 
+            //Get the Workstation we want to move
             WorkstationViewModel.Factory wfactory = new WorkstationViewModel.Factory(getApplication(), workstationId);
             workstationViewModel = ViewModelProviders.of(this, wfactory).get(WorkstationViewModel.class);
             workstationViewModel.getWorkstation().observe(this, workstationEntity -> {
@@ -193,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
+            //Handle ItemClick and update the workstation
             offices = new ArrayList<>();
             adapter = new OfficeAdapter<>(new RecyclerViewItemClickListener() {
                 @Override
@@ -202,15 +190,16 @@ public class MainActivity extends AppCompatActivity {
 
                     workstation.setOfficeId(offices.get(position).getId());
 
+                    //Update the officeId workstation for moving
                     workstationViewModel.updateWorkstation(workstation, new OnAsyncEventListener() {
                         @Override
                         public void onSuccess() {
-
+                            Log.d(TAG, "UpdateWorkstation: Success");
                         }
 
                         @Override
                         public void onFailure(Exception e) {
-
+                            Log.d(TAG, "UpdateWorkstation: Failure", e);
                         }
                     });
 
@@ -235,12 +224,12 @@ public class MainActivity extends AppCompatActivity {
                     workstationViewModel.updateWorkstation(workstation, new OnAsyncEventListener() {
                         @Override
                         public void onSuccess() {
-
+                            Log.d(TAG, "UpdateWorkstation: Success");
                         }
 
                         @Override
                         public void onFailure(Exception e) {
-
+                            Log.d(TAG, "UpdateWorkstation: Failure", e);
                         }
                     });
 
@@ -251,8 +240,6 @@ public class MainActivity extends AppCompatActivity {
                                     Intent.FLAG_ACTIVITY_NO_HISTORY
                     );
 
-
-
                     intent.putExtra("officeId", offices.get(position).getId());
                     intent.putExtra("workstationId", workstationId);
                     startActivity(intent);
@@ -260,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-
+            //Display the office list whithout the office where the workstation is already in
             OfficeMoveViewModel.Factory factory = new OfficeMoveViewModel.Factory(getApplication(), officeId);
             officeMoveViewModel = ViewModelProviders.of(this, factory).get(OfficeMoveViewModel.class);
             officeMoveViewModel.getOfficeMoveable().observe(this, officeEntities -> {

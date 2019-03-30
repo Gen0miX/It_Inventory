@@ -35,7 +35,7 @@ public class DatabaseInitializer {
 
         addOffice(db, 1, "building1", "Marketing", "Sion", "Switzerland");
         addWorkstation(db, true, false, "Windows 10", 16, 1000, "Intel i7-9700K", "QWERTZ", db.officeDao().getOfficeId(1, "building1"));
-        addWorkstation(db, false, true, "Windows 10", 8, 500, "AMD Ryzen 7 2700X", "QWERTZ", db.officeDao().getOfficeId(1, "building1"));
+        addWorkstation(db, false, true, "Windows 10", 8, 500, "AMD Ryzen 7", "QWERTZ", db.officeDao().getOfficeId(1, "building1"));
         addWorkstation(db, true, true, "Windows 10", 16, 2000, "Intel i7-9700K", "QWERTZ", db.officeDao().getOfficeId(1, "building1"));
         addWorkstation(db, false, false, "Linux", 16, 1000, "Intel i7-8700", "QWERTY", db.officeDao().getOfficeId(1, "building1"));
 

@@ -94,7 +94,6 @@ public class WorkstationsActivity extends AppCompatActivity {
                 intent.putExtra("workstationId", workstations.get(position).getId());
                 intent.putExtra("OfficeId", workstations.get(position).getOfficeId());
                 startActivity(intent);
-                onPause();
             }
 
         });
@@ -102,6 +101,7 @@ public class WorkstationsActivity extends AppCompatActivity {
         fab = findViewById(R.id.floatingActionAddWorkstation);
         fab.setOnClickListener(view -> {
             Intent intent = new Intent(WorkstationsActivity.this, WorkstationActivity.class);
+            intent.putExtra("officeId", officeId);
             startActivity(intent);
         });
 

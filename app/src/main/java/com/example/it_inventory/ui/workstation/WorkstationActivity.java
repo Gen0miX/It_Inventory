@@ -54,6 +54,7 @@ public class WorkstationActivity extends AppCompatActivity {
 
     private WorkstationEntity workstation;
 
+    //Create the activity Workstation by handling if it's a create, edit
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -89,6 +90,7 @@ public class WorkstationActivity extends AppCompatActivity {
         }
     }
 
+    //Create the menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         if(workstation != null){
@@ -109,6 +111,7 @@ public class WorkstationActivity extends AppCompatActivity {
         return true;
     }
 
+    //set action for the item's menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if(item.getItemId() == EDIT_WORKSTATION){
@@ -144,21 +147,21 @@ public class WorkstationActivity extends AppCompatActivity {
         }
         if(item.getItemId() == CREATE_WORKSTATION){
 
-           /* if (etRam.getText().toString().isEmpty() || etStorage.getText().toString().isEmpty() ){
+           if (etRam.getText().toString().isEmpty() || etStorage.getText().toString().isEmpty() ){
                 createWorkstation(swScreens.isChecked(), swPortable.isChecked(),
                         etOs.getText().toString(),
                         0,
                         0,
                         etProcessor.getText().toString(),
                         spKeyboard.getSelectedItem().toString());
-            }else{*/
+            }else{
                 createWorkstation(swScreens.isChecked(), swPortable.isChecked(),
                         etOs.getText().toString(),
                         Integer.parseInt(etRam.getText().toString()),
                         Integer.parseInt(etStorage.getText().toString()),
                         etProcessor.getText().toString(),
                         spKeyboard.getSelectedItem().toString());
-            /*}*/
+            }
         }
         if(item.getItemId() == MOVE_WORKSTATION){
                Intent intent = new Intent(WorkstationActivity.this, MainActivity.class);
@@ -173,6 +176,7 @@ public class WorkstationActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //Initialise the default view
     private void initiateView(){
         isEditable = false;
         swScreens = findViewById(R.id.swScreens);
@@ -205,6 +209,7 @@ public class WorkstationActivity extends AppCompatActivity {
         spKeyboard.setVisibility(View.INVISIBLE);
     }
 
+    //Switch  to edit mode
     private void switchToEdit(){
         if(!isEditable){
             swScreens.setFocusable(true);
@@ -260,9 +265,27 @@ public class WorkstationActivity extends AppCompatActivity {
             isEditable = !isEditable;
     }
 
+    //Create a new Workstation
     private void createWorkstation(boolean screens, boolean portable, String os, Integer ram,
                                    Integer storage, String processor, String keyboard){
 
+
+        if(os.isEmpty()){
+            etOs.setError(getString(R.string.workstation_error_os));
+            return;
+        }
+        if(ram == 0){
+            etRam.setError(getString(R.string.workstation_error_rem));
+            return;
+        }
+        if(storage == 0){
+            etStorage.setError(getString(R.string.workstation_error_storage));
+            return;
+        }
+        if(processor.isEmpty()){
+            etProcessor.setError(getString(R.string.workstation_error_processor));
+            return;
+        }
 
         workstation = new WorkstationEntity();
         workstation.setScreens(screens);
@@ -288,6 +311,7 @@ public class WorkstationActivity extends AppCompatActivity {
         });
     }
 
+    //Save changes when a workstation is edited
     private void saveChanges(boolean screens, boolean portable, String os, int ram,
                                    int storage, String processor, String keyboard){
         workstation.setScreens(screens);
@@ -297,6 +321,7 @@ public class WorkstationActivity extends AppCompatActivity {
         workstation.setStorage(storage);
         workstation.setProcessor(processor);
         workstation.setKeyboardType(keyboard);
+        workstation.setOfficeId(officeId);
 
         viewModel.updateWorkstation(workstation, new OnAsyncEventListener() {
             @Override
@@ -315,6 +340,7 @@ public class WorkstationActivity extends AppCompatActivity {
         });
     }
 
+    //Make toast to show the user if a workstation has been edited with no error
     private void setResponse(Boolean response){
         if(response){
             toast = Toast.makeText(this, getString(R.string.action_edited_workstation), Toast.LENGTH_LONG);
@@ -325,6 +351,7 @@ public class WorkstationActivity extends AppCompatActivity {
         }
     }
 
+    //Update the content after we edit the workstation
     private void updateContent(){
         if(workstation != null){
             swScreens.setChecked(workstation.isScreens());
