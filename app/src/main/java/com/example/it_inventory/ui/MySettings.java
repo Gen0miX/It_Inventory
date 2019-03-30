@@ -10,7 +10,7 @@ import android.widget.Switch;
 
 import com.example.it_inventory.R;
 
-public class settings extends AppCompatActivity {
+public class MySettings extends AppCompatActivity {
     private Switch mySwitch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,7 @@ public class settings extends AppCompatActivity {
 
     public void restartApp()
     {
-        Intent i = new Intent(getApplicationContext(), Settings.class);
+        Intent i = new Intent(getApplicationContext(), android.provider.Settings.class);
         startActivity(i);
         finish();
     }
