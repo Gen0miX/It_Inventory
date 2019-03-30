@@ -1,12 +1,11 @@
 package com.example.it_inventory.ui.workstation;
 
-import android.app.ActionBar;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -16,11 +15,8 @@ import android.view.View;
 import com.example.it_inventory.R;
 import com.example.it_inventory.adapter.WorkstationsAdapter;
 import com.example.it_inventory.database.entity.WorkstationEntity;
-import com.example.it_inventory.ui.MainActivity;
-import com.example.it_inventory.ui.office.OfficeActivity;
 import com.example.it_inventory.util.RecyclerViewItemClickListener;
 import com.example.it_inventory.viewmodel.workstation.WorkstationListViewModel;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +45,14 @@ public class WorkstationsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)
+        {
+            setTheme(R.style.DarkTheme);
+        }
+        else
+            setTheme(R.style.AppTheme);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workstations);
 
