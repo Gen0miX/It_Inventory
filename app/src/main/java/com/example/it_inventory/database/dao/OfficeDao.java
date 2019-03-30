@@ -9,6 +9,7 @@ import android.arch.persistence.room.Update;
 import android.database.sqlite.SQLiteConstraintException;
 
 import com.example.it_inventory.database.entity.OfficeEntity;
+import com.example.it_inventory.database.entity.WorkstationEntity;
 
 import java.util.List;
 
