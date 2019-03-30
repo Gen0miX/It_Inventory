@@ -1,11 +1,8 @@
 package com.example.it_inventory.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
-import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import com.example.it_inventory.R;
@@ -24,35 +21,24 @@ public class MySettings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        mySwitch = (Switch)findViewById(R.id.myswitch);
+        mySwitch = findViewById(R.id.myswitch);
         if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)
         {
             mySwitch.setChecked(true);
         }
 
-        mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+        mySwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(isChecked)
             {
-                if(isChecked)
-                {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    restartApp();
-                }
-                else
-                {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    restartApp();
-                }
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                recreate();
+            }
+            else
+            {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                recreate();
             }
         });
     }
 
-    public void restartApp()
-    {
-        Intent i = new Intent(getApplicationContext(), android.provider.Settings.class);
-        startActivity(i);
-        finish();
-    }
 }
