@@ -15,8 +15,6 @@ import java.util.List;
 
 @Dao
 public interface WorkstationDao {
-    @Query("SELECT * FROM workstations")
-    LiveData<List<WorkstationEntity>> getAll();
 
     @Insert
     void insert(WorkstationEntity workstationEntity) throws SQLiteConstraintException;
@@ -36,6 +34,4 @@ public interface WorkstationDao {
     @Query("SELECT * FROM workstations WHERE officeId = :officeId")
     LiveData<List<WorkstationEntity>> getWorkstationsByOfficeId(long officeId);
 
-    @Query("UPDATE workstations SET officeId = :officeId WHERE id=:workstationId")
-    void updateWorkstation(long officeId, long workstationId);
 }

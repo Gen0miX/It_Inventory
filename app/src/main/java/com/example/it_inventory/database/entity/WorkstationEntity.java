@@ -121,6 +121,7 @@ public class WorkstationEntity {
     public long getOfficeId(){
         return officeId ;
     }
+
     public void setOfficeId(long officeId){
         this.officeId = officeId ;
     }

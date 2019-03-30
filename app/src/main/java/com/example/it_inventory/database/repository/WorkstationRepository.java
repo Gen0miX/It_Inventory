@@ -51,9 +51,6 @@ public class WorkstationRepository {
         new DeleteWorkstation(application, callback).execute(Workstation);
     }
 
-    public LiveData<List<WorkstationEntity>> getAllWorkstations (Context context){
-        return AppDatabase.getInstance(context).workstationDao().getAll();
-    }
 
     public LiveData<WorkstationEntity> getWorkstation(final long workstationId, Context context){
         return AppDatabase.getInstance(context).workstationDao().getWorkstation(workstationId);
@@ -63,7 +60,4 @@ public class WorkstationRepository {
         return ((BaseApp)application).getDatabase().workstationDao().getWorkstationsByOfficeId(officeId);
     }
 
-    public void updateOfficeId(final long officeId, final long workstationId, Application application){
-        ((BaseApp)application).getDatabase().workstationDao().updateWorkstation(officeId, workstationId);
-    }
 }

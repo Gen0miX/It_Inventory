@@ -28,9 +28,9 @@ public class CreateWorkstation extends AsyncTask<WorkstationEntity, Void, Void> 
     @Override
     protected Void doInBackground(WorkstationEntity... params) {
         try {
-            for (WorkstationEntity Workstation : params)
+            for (WorkstationEntity workstation : params)
                 ((BaseApp) application).getDatabase().workstationDao()
-                        .insert(Workstation);
+                        .insert(workstation);
         } catch (Exception e) {
             exception = e;
         }

@@ -176,7 +176,6 @@ public class MainActivity extends AppCompatActivity {
             //display the office list for moving the workstations if officeId != 0
         }else{
 
-
             RecyclerView recyclerView = findViewById(R.id.recyclerview_office);
 
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);

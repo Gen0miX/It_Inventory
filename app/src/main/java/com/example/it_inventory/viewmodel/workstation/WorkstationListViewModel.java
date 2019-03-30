@@ -66,9 +66,4 @@ public class WorkstationListViewModel extends AndroidViewModel {
         return observableWorkstations ;
     }
 
-    public void updateWorkstationMoved (WorkstationEntity workstation, OnAsyncEventListener callback){
-        repository.update(workstation, callback, app);
-    }
-
-
 }

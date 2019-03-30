@@ -33,15 +33,15 @@ public class DatabaseInitializer {
     private static void populateDatabaseData(AppDatabase db) {
         db.workstationDao().deleteAll();
 
-        addOffice(db, 1, "Office 1", "Marketing", "Sion", "Switzerland");
-        addWorkstation(db, true, false, "Windows 10", 16, 1000, "Intel i7-9700K", "QWERTZ", db.officeDao().getOfficeId(1, "Office 1"));
-        addWorkstation(db, false, true, "Windows 10", 8, 500, "AMD Ryzen 7 2700X", "QWERTZ", db.officeDao().getOfficeId(1, "Office 1"));
-        addWorkstation(db, true, true, "Windows 10", 16, 2000, "Intel i7-9700K", "QWERTZ", db.officeDao().getOfficeId(1, "Office 1"));
-        addWorkstation(db, false, false, "Linux", 16, 1000, "Intel i7-8700", "QWERTY", db.officeDao().getOfficeId(1, "Office 1"));
+        addOffice(db, 1, "building1", "Marketing", "Sion", "Switzerland");
+        addWorkstation(db, true, false, "Windows 10", 16, 1000, "Intel i7-9700K", "QWERTZ", db.officeDao().getOfficeId(1, "building1"));
+        addWorkstation(db, false, true, "Windows 10", 8, 500, "AMD Ryzen 7 2700X", "QWERTZ", db.officeDao().getOfficeId(1, "building1"));
+        addWorkstation(db, true, true, "Windows 10", 16, 2000, "Intel i7-9700K", "QWERTZ", db.officeDao().getOfficeId(1, "building1"));
+        addWorkstation(db, false, false, "Linux", 16, 1000, "Intel i7-8700", "QWERTY", db.officeDao().getOfficeId(1, "building1"));
 
-        addOffice(db, 2, "Office 2", "Selling", "Sion", "Switzerland");
-        addWorkstation(db, false, true, "Windows 10", 8, 500, "Intel i5-9600K", "QWERTZ", db.officeDao().getOfficeId(2, "Office 2"));
-        addWorkstation(db, true, false, "Mac OS", 16, 1000, "Intel i7", "QWERTY", db.officeDao().getOfficeId(2, "Office 2"));
+        addOffice(db, 2, "building1", "Selling", "Sion", "Switzerland");
+        addWorkstation(db, false, true, "Windows 10", 8, 500, "Intel i5-9600K", "QWERTZ", db.officeDao().getOfficeId(2, "building1"));
+        addWorkstation(db, true, false, "Mac OS", 16, 1000, "Intel i7", "QWERTY", db.officeDao().getOfficeId(2, "building1"));
     }
 
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {

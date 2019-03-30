@@ -50,6 +50,8 @@ public class WorkstationActivity extends AppCompatActivity {
 
     private boolean isEditable;
 
+    private long officeId ;
+
     private WorkstationEntity workstation;
 
     @Override
@@ -66,6 +68,7 @@ public class WorkstationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_workstation);
 
         long workstationId = getIntent().getLongExtra("workstationId", 0);
+        officeId = getIntent().getLongExtra("officeId", 0);
 
         initiateView();
 
@@ -81,7 +84,7 @@ public class WorkstationActivity extends AppCompatActivity {
         if(workstationId != 0){
             setTitle("Workstation Details");
         }else{
-            setTitle("Create Office");
+            setTitle("Create Workstation");
             switchToEdit();
         }
     }
@@ -141,21 +144,21 @@ public class WorkstationActivity extends AppCompatActivity {
         }
         if(item.getItemId() == CREATE_WORKSTATION){
 
-            if (etRam.getText().toString().isEmpty() || etStorage.getText().toString().isEmpty() ){
+           /* if (etRam.getText().toString().isEmpty() || etStorage.getText().toString().isEmpty() ){
                 createWorkstation(swScreens.isChecked(), swPortable.isChecked(),
                         etOs.getText().toString(),
                         0,
                         0,
                         etProcessor.getText().toString(),
                         spKeyboard.getSelectedItem().toString());
-            }else{
+            }else{*/
                 createWorkstation(swScreens.isChecked(), swPortable.isChecked(),
                         etOs.getText().toString(),
                         Integer.parseInt(etRam.getText().toString()),
                         Integer.parseInt(etStorage.getText().toString()),
                         etProcessor.getText().toString(),
                         spKeyboard.getSelectedItem().toString());
-            }
+            /*}*/
         }
         if(item.getItemId() == MOVE_WORKSTATION){
                Intent intent = new Intent(WorkstationActivity.this, MainActivity.class);
@@ -257,24 +260,8 @@ public class WorkstationActivity extends AppCompatActivity {
             isEditable = !isEditable;
     }
 
-    private void createWorkstation(boolean screens, boolean portable, String os, int ram,
-                                   int storage, String processor, String keyboard){
-
-        if(os.isEmpty()){
-            etOs.setError(getString(R.string.workstation_error_os));
-            return;
-        }
-        if(ram == 0){
-            etRam.setError(getString(R.string.workstation_error_rem));
-            return;
-        }
-        if(storage == 0){
-            etStorage.setError(getString(R.string.workstation_error_storage));
-            return;
-        }
-        if(processor.isEmpty()){
-            etProcessor.setError(getString(R.string.workstation_error_processor));
-        }
+    private void createWorkstation(boolean screens, boolean portable, String os, Integer ram,
+                                   Integer storage, String processor, String keyboard){
 
 
         workstation = new WorkstationEntity();
@@ -285,6 +272,7 @@ public class WorkstationActivity extends AppCompatActivity {
         workstation.setStorage(storage);
         workstation.setProcessor(processor);
         workstation.setKeyboardType(keyboard);
+        workstation.setOfficeId(officeId);
 
         viewModel.createWorkstation(workstation, new OnAsyncEventListener() {
             @Override
