@@ -1,5 +1,6 @@
 package com.example.it_inventory.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
@@ -16,8 +17,9 @@ public class MySettings extends AppCompatActivity {
         {
             setTheme(R.style.DarkTheme);
         }
-        else
+        else {
             setTheme(R.style.AppTheme);
+            }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
@@ -31,12 +33,14 @@ public class MySettings extends AppCompatActivity {
             if(isChecked)
             {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                recreate();
+                Intent mainIntent = new Intent(this, MainActivity.class);
+                startActivity(mainIntent);
             }
             else
             {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                recreate();
+                Intent mainIntent = new Intent(this, MainActivity.class);
+                startActivity(mainIntent);
             }
         });
     }
