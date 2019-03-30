@@ -11,6 +11,7 @@ import android.support.annotation.NonNull;
 import com.example.it_inventory.ui.BaseApp;
 import com.example.it_inventory.database.entity.WorkstationEntity;
 import com.example.it_inventory.database.repository.WorkstationRepository;
+import com.example.it_inventory.util.OnAsyncEventListener;
 
 import java.util.List;
 
@@ -22,8 +23,8 @@ public class WorkstationListViewModel extends AndroidViewModel {
 
     private final MediatorLiveData<List<WorkstationEntity>> observableWorkstations;
 
-    public WorkstationListViewModel(@NonNull Application app, final Long officeId,
-                                    WorkstationRepository workstationRepository){
+    public WorkstationListViewModel(@NonNull Application app, final long officeId,
+                                     WorkstationRepository workstationRepository){
         super(app);
         this.app = app ;
 
@@ -32,10 +33,10 @@ public class WorkstationListViewModel extends AndroidViewModel {
         observableWorkstations = new MediatorLiveData<>();
         observableWorkstations.setValue(null);
 
-        LiveData<List<WorkstationEntity>> listWorkstationsByOffice =
-                workstationRepository.getWorkstationsByOffice(officeId, app);
+            LiveData<List<WorkstationEntity>> listWorkstationsByOffice =
+                    workstationRepository.getWorkstationsByOffice(officeId, app);
+            observableWorkstations.addSource(listWorkstationsByOffice, observableWorkstations::setValue);
 
-        observableWorkstations.addSource(listWorkstationsByOffice, observableWorkstations::setValue);
     }
 
     public static class Factory extends ViewModelProvider.NewInstanceFactory {
@@ -44,6 +45,8 @@ public class WorkstationListViewModel extends AndroidViewModel {
         Application app;
 
         private final long officeId;
+
+
 
         private final WorkstationRepository workstationRepository;
 
@@ -61,6 +64,10 @@ public class WorkstationListViewModel extends AndroidViewModel {
 
     public LiveData<List<WorkstationEntity>> getWorkstationByOfficeId(){
         return observableWorkstations ;
+    }
+
+    public void updateWorkstationMoved (WorkstationEntity workstation, OnAsyncEventListener callback){
+        repository.update(workstation, callback, app);
     }
 
 

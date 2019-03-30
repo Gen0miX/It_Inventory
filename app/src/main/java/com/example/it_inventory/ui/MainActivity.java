@@ -16,13 +16,18 @@ import android.view.View;
 
 import com.example.it_inventory.R;
 import com.example.it_inventory.adapter.OfficeAdapter;
+import com.example.it_inventory.adapter.WorkstationsAdapter;
 import com.example.it_inventory.database.AppDatabase;
 import com.example.it_inventory.database.entity.OfficeEntity;
+import com.example.it_inventory.database.entity.WorkstationEntity;
 import com.example.it_inventory.ui.office.OfficeActivity;
 import com.example.it_inventory.ui.workstation.WorkstationsActivity;
+import com.example.it_inventory.util.OnAsyncEventListener;
 import com.example.it_inventory.util.RecyclerViewItemClickListener;
 import com.example.it_inventory.viewModel.office.OfficeListViewModel;
 import com.example.it_inventory.viewModel.office.OfficeMoveViewModel;
+import com.example.it_inventory.viewmodel.workstation.WorkstationListViewModel;
+import com.example.it_inventory.viewmodel.workstation.WorkstationViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +41,15 @@ public class MainActivity extends AppCompatActivity {
 
     private OfficeListViewModel officeListViewModel;
     private OfficeMoveViewModel officeMoveViewModel;
+
+    private WorkstationEntity workstation ;
+    private WorkstationViewModel workstationViewModel;
+
     private OfficeAdapter<OfficeEntity> adapter ;
+
+    private List<WorkstationEntity> workstations;
     private List<OfficeEntity> offices;
+
     private long officeId;
     private long workstationId;
 
@@ -97,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
 
         if(officeId == 0){
             initializeDemoData(AppDatabase.getInstance(this));
-
             RecyclerView recyclerView = findViewById(R.id.recyclerview_office);
 
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -114,11 +125,13 @@ public class MainActivity extends AppCompatActivity {
                     Log.d(TAG, "Clicked position: "+ position);
                     Log.d(TAG, "Clicked on: "+offices.get(position).getBuilding());
 
+
                     Intent intent = new Intent(MainActivity.this, OfficeActivity.class);
                     intent.setFlags(
                             Intent.FLAG_ACTIVITY_NO_ANIMATION |
                                     Intent.FLAG_ACTIVITY_NO_HISTORY
                     );
+
                     intent.putExtra("officeId", offices.get(position).getId());
                     startActivity(intent);
                 }
@@ -133,10 +146,12 @@ public class MainActivity extends AppCompatActivity {
                             Intent.FLAG_ACTIVITY_NO_ANIMATION |
                                     Intent.FLAG_ACTIVITY_NO_HISTORY
                     );
+
                     intent.putExtra("officeId", offices.get(position).getId());
                     startActivity(intent);
                 }
             });
+
 
             FloatingActionButton fab = findViewById(R.id.floatingActionAddOffice);
             fab.setOnClickListener(view -> {
@@ -173,6 +188,14 @@ public class MainActivity extends AppCompatActivity {
                     LinearLayoutManager.VERTICAL);
             recyclerView.addItemDecoration(dividerItemDecoration);
 
+            WorkstationViewModel.Factory wfactory = new WorkstationViewModel.Factory(getApplication(), workstationId);
+            workstationViewModel = ViewModelProviders.of(this, wfactory).get(WorkstationViewModel.class);
+            workstationViewModel.getWorkstation().observe(this, workstationEntity -> {
+                if(workstationEntity != null){
+                    workstation = workstationEntity;
+                }
+            });
+
             offices = new ArrayList<>();
             adapter = new OfficeAdapter<>(new RecyclerViewItemClickListener() {
                 @Override
@@ -180,11 +203,26 @@ public class MainActivity extends AppCompatActivity {
                     Log.d(TAG, "Clicked position: "+ position);
                     Log.d(TAG, "Clicked on: "+offices.get(position).getBuilding());
 
+                    workstation.setOfficeId(offices.get(position).getId());
+
+                    workstationViewModel.updateWorkstation(workstation, new OnAsyncEventListener() {
+                        @Override
+                        public void onSuccess() {
+
+                        }
+
+                        @Override
+                        public void onFailure(Exception e) {
+
+                        }
+                    });
+
                     Intent intent = new Intent(MainActivity.this, WorkstationsActivity.class);
                     intent.setFlags(
                             Intent.FLAG_ACTIVITY_NO_ANIMATION |
                                     Intent.FLAG_ACTIVITY_NO_HISTORY
                     );
+
                     intent.putExtra("officeId", offices.get(position).getId());
                     intent.putExtra("workstationId", workstationId);
                     startActivity(intent);
@@ -195,17 +233,36 @@ public class MainActivity extends AppCompatActivity {
                     Log.d(TAG, "longClicked position:" + position);
                     Log.d(TAG, "longClicked on: " + offices.get(position).toString());
 
+                    workstation.setOfficeId(offices.get(position).getId());
+
+                    workstationViewModel.updateWorkstation(workstation, new OnAsyncEventListener() {
+                        @Override
+                        public void onSuccess() {
+
+                        }
+
+                        @Override
+                        public void onFailure(Exception e) {
+
+                        }
+                    });
+
+
                     Intent intent = new Intent(MainActivity.this, WorkstationsActivity.class);
                     intent.setFlags(
                             Intent.FLAG_ACTIVITY_NO_ANIMATION |
                                     Intent.FLAG_ACTIVITY_NO_HISTORY
                     );
+
+
+
                     intent.putExtra("officeId", offices.get(position).getId());
                     intent.putExtra("workstationId", workstationId);
                     startActivity(intent);
 
                 }
             });
+
 
             OfficeMoveViewModel.Factory factory = new OfficeMoveViewModel.Factory(getApplication(), officeId);
             officeMoveViewModel = ViewModelProviders.of(this, factory).get(OfficeMoveViewModel.class);
@@ -218,9 +275,6 @@ public class MainActivity extends AppCompatActivity {
             recyclerView.setAdapter(adapter);
 
         }
-
-
-
 
     }
 

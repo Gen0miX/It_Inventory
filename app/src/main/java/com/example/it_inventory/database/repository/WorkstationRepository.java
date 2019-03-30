@@ -62,4 +62,8 @@ public class WorkstationRepository {
     public LiveData<List<WorkstationEntity>> getWorkstationsByOffice(final long officeId, Application application){
         return ((BaseApp)application).getDatabase().workstationDao().getWorkstationsByOfficeId(officeId);
     }
+
+    public void updateOfficeId(final long officeId, final long workstationId, Application application){
+        ((BaseApp)application).getDatabase().workstationDao().updateWorkstation(officeId, workstationId);
+    }
 }

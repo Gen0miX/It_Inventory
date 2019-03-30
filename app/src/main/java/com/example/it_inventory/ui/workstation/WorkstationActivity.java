@@ -66,6 +66,7 @@ public class WorkstationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_workstation);
 
         long workstationId = getIntent().getLongExtra("workstationId", 0);
+        long oldOfficeId = getIntent().getLongExtra("officeId", 0);
 
         initiateView();
 
@@ -150,7 +151,8 @@ public class WorkstationActivity extends AppCompatActivity {
         if(item.getItemId() == MOVE_WORKSTATION){
                Intent intent = new Intent(WorkstationActivity.this, MainActivity.class);
                 intent.setFlags(
-                        Intent.FLAG_ACTIVITY_NO_ANIMATION
+                        Intent.FLAG_ACTIVITY_NO_ANIMATION |
+                                Intent.FLAG_ACTIVITY_NO_HISTORY
                 );
                 intent.putExtra("workstationId", workstation.getId());
                 intent.putExtra("officeId", workstation.getOfficeId());

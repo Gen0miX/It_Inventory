@@ -18,6 +18,7 @@ import com.example.it_inventory.database.entity.WorkstationEntity;
 import com.example.it_inventory.util.RecyclerViewItemClickListener;
 import com.example.it_inventory.viewmodel.workstation.WorkstationListViewModel;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +32,6 @@ public class WorkstationsActivity extends AppCompatActivity {
 
     private List<WorkstationEntity> workstations;
 
-    private long workstationId;
 
     FloatingActionButton fab ;
 
@@ -57,7 +57,7 @@ public class WorkstationsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_workstations);
 
 
-        workstationId = getIntent().getLongExtra("workstationId", 0);
+
         long officeId = getIntent().getLongExtra("officeId", 0);
 
 
@@ -79,6 +79,7 @@ public class WorkstationsActivity extends AppCompatActivity {
                         Intent.FLAG_ACTIVITY_NO_ANIMATION
                 );
                 intent.putExtra("workstationId", workstations.get(position).getId());
+                intent.putExtra("officeId", officeId);
                 startActivity(intent);
             }
 
@@ -92,6 +93,7 @@ public class WorkstationsActivity extends AppCompatActivity {
                         Intent.FLAG_ACTIVITY_NO_ANIMATION
                 );
                 intent.putExtra("workstationId", workstations.get(position).getId());
+                intent.putExtra("OfficeId", officeId);
                 startActivity(intent);
                 onPause();
             }
@@ -104,25 +106,15 @@ public class WorkstationsActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-            WorkstationListViewModel.Factory factory = new WorkstationListViewModel.Factory(getApplication(), officeId);
-            workstationListViewModel = ViewModelProviders.of(this, factory).get(WorkstationListViewModel.class);
-            workstationListViewModel.getWorkstationByOfficeId().observe(this, workstationEntities -> {
-                if(workstationEntities != null){
-                    workstations = workstationEntities;
-                    if(workstationId != 0){
-                        WorkstationEntity workstationToChange = null ;
-                        for(int i=0 ; i != workstations.size() ; i++){
-                            if(workstations.get(i).getId() == workstationId){
-                                workstationToChange = workstations.get(i);
-                                break;
-                            }
-                        }
-                        workstationToChange.setOfficeId(officeId);
-                    }
 
-                    adapter.setData(workstations);
-                }
-            });
+        WorkstationListViewModel.Factory factory = new WorkstationListViewModel.Factory(getApplication(), officeId);
+        workstationListViewModel = ViewModelProviders.of(this, factory).get(WorkstationListViewModel.class);
+        workstationListViewModel.getWorkstationByOfficeId().observe(this, workstationEntities -> {
+            if(workstationEntities != null){
+                workstations = workstationEntities;
+                adapter.setData(workstations);
+            }
+        });
 
         recyclerView.setAdapter(adapter);
     }
