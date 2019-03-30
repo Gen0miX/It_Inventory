@@ -8,6 +8,8 @@ import android.arch.persistence.room.PrimaryKey;
 
 @Entity (tableName = "offices")
 public class OfficeEntity {
+
+    // Office Entity parameters
     @PrimaryKey (autoGenerate = true)
     @ColumnInfo (name = "id")
     private long id;
@@ -22,12 +24,12 @@ public class OfficeEntity {
     @ColumnInfo (name = "Country")
     private String country;
 
-
+    // Constructor by default : ignored
     @Ignore
     public OfficeEntity(){
     }
 
-
+    // Constructor
     public OfficeEntity(int floor, String building, String sector, String city, String country) {
         this.floor = floor;
         this.building = building;
@@ -37,6 +39,7 @@ public class OfficeEntity {
     }
 
 
+    // Getters and Setters
     public long getId() {
         return id;
     }

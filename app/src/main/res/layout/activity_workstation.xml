@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.workstation.WorkstationActivity" >
+    tools:context=".ui.workstation.WorkstationActivity"
+    android:background="?attr/backgroudcolor">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -26,6 +27,7 @@
             android:text="@string/workstation_portable"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:textColor="?attr/textcolor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,6 +40,7 @@
             android:text="@string/workstation_screens"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -66,6 +69,7 @@
             android:text="@string/workstaion_os"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/swScreens" />
 
@@ -76,6 +80,7 @@
             android:layout_marginStart="67dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="8dp"
+            android:textColorHint="?attr/textcolor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView16"
             app:layout_constraintTop_toBottomOf="@+id/swPortable">
@@ -84,6 +89,7 @@
                 android:id="@+id/etOs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
                 android:hint="@string/workstation_hint_os" />
         </android.support.design.widget.TextInputLayout>
 
@@ -96,6 +102,7 @@
             android:text="@string/workstation_ram"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
@@ -106,6 +113,7 @@
             android:layout_marginStart="51dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:textColorHint="?attr/textcolor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView17"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
@@ -114,6 +122,7 @@
                 android:id="@+id/etRam"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
                 android:hint="@string/workstation_hint_ram"
                 android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
@@ -127,6 +136,7 @@
             android:text="@string/workstaion_storage"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
@@ -137,6 +147,7 @@
             android:layout_marginStart="25dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:textColorHint="?attr/textcolor"
             app:layout_constraintEnd_toStartOf="@+id/textView21"
             app:layout_constraintStart_toEndOf="@+id/textView18"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout7">
@@ -145,6 +156,7 @@
                 android:id="@+id/etStorage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
                 android:hint="@string/workstation_hint_storage"
                 android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
@@ -158,6 +170,7 @@
             android:text="GO"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:textColor="?attr/textcolor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
@@ -170,6 +183,7 @@
             android:text="@string/workstation_processor"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
@@ -180,6 +194,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:textColorHint="?attr/textcolor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView22"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout8">
@@ -188,6 +203,7 @@
                 android:id="@+id/etProcessor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="?attr/textcolor"
                 android:hint="@string/workstation_hint_processor" />
         </android.support.design.widget.TextInputLayout>
 
@@ -200,6 +216,7 @@
             android:text="@string/workstation_keyboard"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
@@ -211,6 +228,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
             android:entries="@array/keyboard_array"
+            android:textColorHint="?attr/textcolor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView24"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout9" />
@@ -223,6 +241,7 @@
             android:layout_marginTop="24dp"
             android:text="textview"
             android:textSize="18sp"
+            android:textColor="?attr/textcolor"
             app:layout_constraintStart_toEndOf="@+id/textView24"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout9" />
 
