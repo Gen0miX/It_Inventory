@@ -14,7 +14,6 @@ public class settings extends AppCompatActivity {
     private Switch mySwitch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_settings);
 
         if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)
         {
@@ -23,7 +22,7 @@ public class settings extends AppCompatActivity {
         else
             setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_settings);
 
         mySwitch = (Switch)findViewById(R.id.myswitch);
         if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)

@@ -3,6 +3,7 @@ package com.example.it_inventory.ui;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
@@ -12,7 +13,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.it_inventory.R;
 import com.example.it_inventory.adapter.OfficeAdapter;
@@ -59,12 +59,11 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.SettingsMenu) {
+        if (id == R.id.Settings) {
             //Menu item pressed
-            Toast.makeText(this,"Settings menu was pressed.", Toast.LENGTH_SHORT).show();
-            Intent settingsIntent = new Intent(this, settings.class);
-            startActivity(settingsIntent);
-
+           // Toast.makeText(this,"Settings menu was pressed.", Toast.LENGTH_SHORT).show();
+            Intent settings = new Intent(MainActivity.this, Settings.class);
+            startActivity(settings);
             return true; //Indicated menu press was handled
         }
 
