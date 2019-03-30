@@ -139,11 +139,20 @@ public class OfficeActivity extends AppCompatActivity {
             alertDialog.show();
         }
         if(item.getItemId() == CREATE_OFFICE){
-            createOffice(etName.getText().toString(),
-                    Integer.parseInt(etFloor.getText().toString()),
-                    etSector.getText().toString(),
-                    etCity.getText().toString(),
-                    etCountry.getText().toString());
+
+            if(etFloor.getText().toString().isEmpty()){
+                createOffice(etName.getText().toString(),
+                        1000000000,
+                        etSector.getText().toString(),
+                        etCity.getText().toString(),
+                        etCountry.getText().toString());
+            }else{
+                createOffice(etName.getText().toString(),
+                        Integer.parseInt(etFloor.getText().toString()),
+                        etSector.getText().toString(),
+                        etCity.getText().toString(),
+                        etCountry.getText().toString());
+            }
         }
         return super.onOptionsItemSelected(item);
     }
@@ -210,6 +219,28 @@ public class OfficeActivity extends AppCompatActivity {
     }
 
     private void createOffice(String name, int floor, String sector, String city, String country ){
+
+        if(name.isEmpty()){
+            etName.setError(getString(R.string.office_error_name));
+            return;
+        }
+        if(floor == 1000000000){
+            etFloor.setError(getString(R.string.office_error_floor));
+            return;
+        }
+        if(sector.isEmpty()){
+            etSector.setError(getString(R.string.office_error_sector));
+            return;
+        }
+        if(city.isEmpty()){
+            etCity.setError(getString(R.string.office_error_city));
+            return;
+        }
+        if(country.isEmpty()){
+            etCountry.setError(getString(R.string.office_error_country));
+            return;
+        }
+
         office = new OfficeEntity();
         office.setBuilding(name);
         office.setFloor(floor);

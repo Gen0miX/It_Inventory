@@ -66,7 +66,6 @@ public class WorkstationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_workstation);
 
         long workstationId = getIntent().getLongExtra("workstationId", 0);
-        long oldOfficeId = getIntent().getLongExtra("officeId", 0);
 
         initiateView();
 
@@ -141,12 +140,22 @@ public class WorkstationActivity extends AppCompatActivity {
             alertDialog.show();
         }
         if(item.getItemId() == CREATE_WORKSTATION){
-            createWorkstation(swScreens.isChecked(), swPortable.isChecked(),
-                                etOs.getText().toString(),
-                                Integer.parseInt(etRam.getText().toString()),
-                                Integer.parseInt(etStorage.getText().toString()),
-                                etProcessor.getText().toString(),
-                                spKeyboard.getSelectedItem().toString());
+
+            if (etRam.getText().toString().isEmpty() || etStorage.getText().toString().isEmpty() ){
+                createWorkstation(swScreens.isChecked(), swPortable.isChecked(),
+                        etOs.getText().toString(),
+                        0,
+                        0,
+                        etProcessor.getText().toString(),
+                        spKeyboard.getSelectedItem().toString());
+            }else{
+                createWorkstation(swScreens.isChecked(), swPortable.isChecked(),
+                        etOs.getText().toString(),
+                        Integer.parseInt(etRam.getText().toString()),
+                        Integer.parseInt(etStorage.getText().toString()),
+                        etProcessor.getText().toString(),
+                        spKeyboard.getSelectedItem().toString());
+            }
         }
         if(item.getItemId() == MOVE_WORKSTATION){
                Intent intent = new Intent(WorkstationActivity.this, MainActivity.class);
@@ -250,6 +259,24 @@ public class WorkstationActivity extends AppCompatActivity {
 
     private void createWorkstation(boolean screens, boolean portable, String os, int ram,
                                    int storage, String processor, String keyboard){
+
+        if(os.isEmpty()){
+            etOs.setError(getString(R.string.workstation_error_os));
+            return;
+        }
+        if(ram == 0){
+            etRam.setError(getString(R.string.workstation_error_rem));
+            return;
+        }
+        if(storage == 0){
+            etStorage.setError(getString(R.string.workstation_error_storage));
+            return;
+        }
+        if(processor.isEmpty()){
+            etProcessor.setError(getString(R.string.workstation_error_processor));
+        }
+
+
         workstation = new WorkstationEntity();
         workstation.setScreens(screens);
         workstation.setPortable(portable);

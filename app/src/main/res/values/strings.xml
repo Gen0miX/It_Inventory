@@ -43,6 +43,17 @@
     <string name="action_error_office">Office not edited</string>
     <string name="action_error_workstation">Workstation not edited</string>
 
+    <string name="workstation_error_os">"OS field can't be empty"</string>
+    <string name="workstation_error_rem">"RAM field can't be empty"</string>
+    <string name="workstation_error_storage">"Storage field can't be empty"</string>
+    <string name="workstation_error_processor">"Processor field can't be empty</string>
+
+    <string name="office_error_name">"Name field can't be empty"</string>
+    <string name="office_error_floor">"Floor field can't be empty"</string>
+    <string name="office_error_sector">"Sector field can't be empty</string>
+    <string name="office_error_city">"City field can't be empty</string>
+    <string name="office_error_country">"Country field can't be empty</string>
+
     <string name="kb_prompt">Keyboard language</string>
     <string-array name="keyboard_array">
         <item>QWERTZ</item>
