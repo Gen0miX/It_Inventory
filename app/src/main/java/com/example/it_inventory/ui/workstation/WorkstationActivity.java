@@ -321,7 +321,6 @@ public class WorkstationActivity extends AppCompatActivity {
         workstation.setStorage(storage);
         workstation.setProcessor(processor);
         workstation.setKeyboardType(keyboard);
-        workstation.setOfficeId(officeId);
 
         viewModel.updateWorkstation(workstation, new OnAsyncEventListener() {
             @Override
