@@ -1,61 +1,33 @@
 package com.example.it_inventory.database.entity;
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.ForeignKey;
-import android.arch.persistence.room.Ignore;
-import android.arch.persistence.room.PrimaryKey;
 
-// If we delete the office, we delete all the workstation in it.
-@Entity (tableName = "workstations", foreignKeys = @ForeignKey(entity = OfficeEntity.class,
-                                                               parentColumns = "id",
-                                                               childColumns = "officeId" , onDelete = ForeignKey.CASCADE))
+
+import java.util.HashMap;
+import java.util.Map;
 
 // Workstation Entity : parameters
 public class WorkstationEntity {
-    @PrimaryKey (autoGenerate = true)
-    private long id ;
-    @ColumnInfo(name = "Screens")
+    private String id ;
     private boolean screens;
-    @ColumnInfo (name = "Portable")
     private boolean portable;
-    @ColumnInfo (name = "OS")
     private String os;
-    @ColumnInfo (name = "RAM")
-    private int ram;
-    @ColumnInfo (name = "Storage")
-    private int storage;
-    @ColumnInfo (name = "Processor")
+    private Double ram;
+    private Double storage;
     private String processor;
-    @ColumnInfo (name = "Keyboard_Type")
     private String keyboardType;
-    @ColumnInfo(name = "officeId")
-    private long officeId ;
+    private String officeName;
 
-    // Constructor by default : ignored
-    @Ignore
     public WorkstationEntity(){
     }
 
-    // Constructor
-    public WorkstationEntity(boolean screens, boolean portable, String os, int ram, int storage,
-                              String processor, String keyboardType, long officeId ){
-        this.screens = screens ;
-        this.portable = portable ;
-        this.os = os ;
-        this.ram = ram ;
-        this.storage = storage ;
-        this.processor = processor ;
-        this.keyboardType = keyboardType ;
-        this.officeId = officeId ;
-    }
-
     // getters and setters
-    public long getId(){
-        return id ;
+
+    @Exclude
+    public String getId() {
+        return id;
     }
 
-    public void setId(long id){
-        this.id = id ;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public boolean isScreens() {
@@ -82,23 +54,19 @@ public class WorkstationEntity {
         this.os = os;
     }
 
-    public int getRam() {
+    public Double getRam() {
         return ram;
     }
 
-    public String getRamString(){ return Integer.toString(ram);}
-
-    public void setRam(int ram) {
+    public void setRam(Double ram) {
         this.ram = ram;
     }
 
-    public int getStorage() {
+    public Double getStorage() {
         return storage;
     }
 
-    public String getStorageString(){return Integer.toString(storage);}
-
-    public void setStorage(int storage) {
+    public void setStorage(Double storage) {
         this.storage = storage;
     }
 
@@ -118,11 +86,34 @@ public class WorkstationEntity {
         this.keyboardType = keyboardType;
     }
 
-    public long getOfficeId(){
-        return officeId ;
+    @Exclude
+    public String getOfficeId(){
+        return officeName;
     }
 
-    public void setOfficeId(long officeId){
-        this.officeId = officeId ;
+    public void setOfficeId(String officeId){
+        this.officeName = officeId ;
+    }
+
+    public boolean equals(Object obj) {
+        if (obj == null) return false;
+        if (obj == this) return true;
+        if (!(obj instanceof WorkstationEntity)) return false;
+        WorkstationEntity o = (WorkstationEntity) obj;
+        return o.getId().equals(this.getId());
+    }
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("screens", screens);
+        result.put("portable", portable);
+        result.put("os", os);
+        result.put("ram", ram);
+        result.put("storage", storage);
+        result.put("processor", processor);
+        result.put("keyboardType", keyboardType);
+
+        return result;
     }
 }
