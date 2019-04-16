@@ -5,6 +5,11 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
+import com.google.firebase.database.Exclude;
+
+import java.util.HashMap;
+import java.util.Map;
+
 
 @Entity (tableName = "offices")
 public class OfficeEntity {
@@ -40,6 +45,7 @@ public class OfficeEntity {
 
 
     // Getters and Setters
+    @Exclude
     public long getId() {
         return id;
     }
@@ -88,6 +94,19 @@ public class OfficeEntity {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("floor", floor);
+        result.put("building", building);
+        result.put("sector", sector);
+        result.put("city", city);
+        result.put("country", country);
+
+        return result;
+
     }
 
 }

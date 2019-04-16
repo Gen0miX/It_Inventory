@@ -1,6 +1,8 @@
 package com.example.it_inventory.database.entity;
 
 
+import com.google.firebase.database.Exclude;
+
 import java.util.HashMap;
 import java.util.Map;
 
