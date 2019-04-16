@@ -6,7 +6,6 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MediatorLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
-import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.example.it_inventory.database.entity.OfficeEntity;
@@ -19,7 +18,7 @@ public class OfficeViewModel extends AndroidViewModel {
 
     private Application app ;
 
-    private Context appContext ;
+    //private Context appContext ;
 
     private MediatorLiveData<OfficeEntity> observableOffice ;
 
@@ -31,12 +30,12 @@ public class OfficeViewModel extends AndroidViewModel {
 
         repository = officeRepository ;
 
-        appContext = app.getApplicationContext();
+        //appContext = app.getApplicationContext();
 
         observableOffice = new MediatorLiveData<>();
         observableOffice.setValue(null);
 
-        LiveData<OfficeEntity> office = repository.getOffice(officeId, appContext);
+        LiveData<OfficeEntity> office = repository.getOffice(officeId);
 
         observableOffice.addSource(office, observableOffice::setValue);
 
@@ -69,15 +68,15 @@ public class OfficeViewModel extends AndroidViewModel {
 
 
     public void updateOffice(OfficeEntity office, OnAsyncEventListener callback){
-        repository.update(office, callback, app);
+        repository.update(office, callback);
     }
 
     public void createOffice(OfficeEntity office, OnAsyncEventListener callback){
-        repository.insert(office, callback, app);
+        repository.insert(office, callback);
     }
 
     public void deleteOffice(OfficeEntity office, OnAsyncEventListener callback){
-        repository.delete(office, callback, app);
+        repository.delete(office, callback);
     }
 
 }

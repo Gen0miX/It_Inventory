@@ -126,7 +126,7 @@ public class OfficeRepository {
     public LiveData<List<OfficeEntity>> getAllOffices (){
         DatabaseReference reference = FirebaseDatabase.getInstance()
                 .getReference("offices");
-        return new OfficeLiveData(reference);
+        return new OfficeListLiveData(reference);
     }
 
     public LiveData<List<OfficeEntity>> getOfficesMove(long officeId, Application app){
