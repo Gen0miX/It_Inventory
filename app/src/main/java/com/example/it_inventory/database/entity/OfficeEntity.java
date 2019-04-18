@@ -1,56 +1,51 @@
 package com.example.it_inventory.database.entity;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.Ignore;
-import android.arch.persistence.room.PrimaryKey;
-
 import com.google.firebase.database.Exclude;
 
 import java.util.HashMap;
 import java.util.Map;
 
 
-@Entity (tableName = "offices")
+//@Entity (tableName = "offices")
 public class OfficeEntity {
 
     // Office Entity parameters
-    @PrimaryKey (autoGenerate = true)
-    @ColumnInfo (name = "id")
-    private long id;
-    @ColumnInfo(name = "Floor")
+    //@PrimaryKey (autoGenerate = true)
+    //@ColumnInfo (name = "id")
+    private String id;
+    //@ColumnInfo(name = "Floor")
     private int floor;
-    @ColumnInfo (name = "Building")
+    //@ColumnInfo (name = "Building")
     private String building;
-    @ColumnInfo (name = "Sector")
+    //@ColumnInfo (name = "Sector")
     private String sector;
-    @ColumnInfo (name = "City")
+    //@ColumnInfo (name = "City")
     private String city;
-    @ColumnInfo (name = "Country")
+    //@ColumnInfo (name = "Country")
     private String country;
 
     // Constructor by default : ignored
-    @Ignore
+    //@Ignore
     public OfficeEntity(){
     }
 
     // Constructor
-    public OfficeEntity(int floor, String building, String sector, String city, String country) {
+   /* public OfficeEntity(int floor, String building, String sector, String city, String country) {
         this.floor = floor;
         this.building = building;
         this.sector = sector;
         this.city = city;
         this.country = country;
-    }
+    }*/
 
 
     // Getters and Setters
     @Exclude
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id){
+    public void setId(String id){
         this.id = id ;
     }
 

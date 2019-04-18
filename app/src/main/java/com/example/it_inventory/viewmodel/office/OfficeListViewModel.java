@@ -33,7 +33,7 @@ public class OfficeListViewModel extends AndroidViewModel {
         observableOffice = new MediatorLiveData<>();
         observableOffice.setValue(null);
 
-        LiveData<List<OfficeEntity>> offices = repository.getAllOffices(app);
+        LiveData<List<OfficeEntity>> offices = repository.getAllOffices();
 
         observableOffice.addSource(offices, observableOffice::setValue);
     }

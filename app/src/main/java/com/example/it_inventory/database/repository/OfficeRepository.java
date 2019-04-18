@@ -2,14 +2,11 @@ package com.example.it_inventory.database.repository;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
-import android.content.Context;
 
-import com.example.it_inventory.ui.BaseApp;
-import com.example.it_inventory.async.Office.CreateOffice;
-import com.example.it_inventory.async.Office.DeleteOffice;
-import com.example.it_inventory.async.Office.UpdateOffice;
-import com.example.it_inventory.database.AppDatabase;
 import com.example.it_inventory.database.entity.OfficeEntity;
+import com.example.it_inventory.database.firebase.Office.OfficeListLiveData;
+import com.example.it_inventory.database.firebase.Office.OfficeLiveData;
+import com.example.it_inventory.ui.BaseApp;
 import com.example.it_inventory.util.OnAsyncEventListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -70,7 +67,7 @@ public class OfficeRepository {
     public void update(final OfficeEntity Office, OnAsyncEventListener callback) {
         FirebaseDatabase.getInstance()
                 .getReference("offices")
-                .child(Long.toString(Office.getId()))
+                .child(Office.getId())
                 .updateChildren(Office.toMap(),
                         (databaseError, databaseReference) ->
                         {
@@ -93,7 +90,7 @@ public class OfficeRepository {
     public void delete(final OfficeEntity Office, OnAsyncEventListener callback) {
         FirebaseDatabase.getInstance()
                 .getReference()
-                .child(Long.toString(Office.getId()))
+                .child(Office.getId())
                 .removeValue((databaseError, databaseReference) ->
                 {
                     if(databaseError != null)
@@ -112,10 +109,10 @@ public class OfficeRepository {
         return AppDatabase.getInstance(context).officeDao().getOffice(officeId);
     }*/
 
-    public LiveData<OfficeEntity> getOffice(final long officeId){
+    public LiveData<OfficeEntity> getOffice(final String officeId){
         DatabaseReference reference = FirebaseDatabase.getInstance()
                 .getReference("offices")
-                .child(Long.toString(officeId));
+                .child(officeId);
         return new OfficeLiveData(reference);
     }
     /*
@@ -129,7 +126,7 @@ public class OfficeRepository {
         return new OfficeListLiveData(reference);
     }
 
-    public LiveData<List<OfficeEntity>> getOfficesMove(long officeId, Application app){
+    public LiveData<List<OfficeEntity>> getOfficesMove(String officeId, Application app){
         return ((BaseApp)app).getDatabase().officeDao().getOfficesMove(officeId);
     }
 

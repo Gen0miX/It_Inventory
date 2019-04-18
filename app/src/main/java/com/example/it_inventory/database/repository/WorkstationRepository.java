@@ -2,15 +2,10 @@ package com.example.it_inventory.database.repository;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
-import android.content.Context;
-import android.provider.ContactsContract;
 
-import com.example.it_inventory.async.Workstation.CreateWorkstation;
-import com.example.it_inventory.async.Workstation.DeleteWorkstation;
-import com.example.it_inventory.async.Workstation.UpdateWorkstation;
-import com.example.it_inventory.database.AppDatabase;
 import com.example.it_inventory.database.entity.WorkstationEntity;
-import com.example.it_inventory.ui.BaseApp;
+import com.example.it_inventory.database.firebase.Workstations.WorkstationListLiveData;
+import com.example.it_inventory.database.firebase.Workstations.WorkstationLiveData;
 import com.example.it_inventory.util.OnAsyncEventListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -44,9 +39,20 @@ public class WorkstationRepository {
         new CreateWorkstation(application, callback).execute(Workstation);
     }*/
 
-    public void insert(final WorkstationEntity Workstation, OnAsyncEventListener callback,
-                       Application application) {
-        new CreateWorkstation(application, callback).execute(Workstation);
+    public void insert(final WorkstationEntity Workstation, OnAsyncEventListener callback) {
+        String id = FirebaseDatabase.getInstance()
+                .getReference("workstations").push().getKey();
+        FirebaseDatabase.getInstance()
+                .getReference()
+                .child(id)
+                .setValue(Workstation, (databaseError, databaseReference) ->
+                {
+                    if (databaseError != null) {
+                        callback.onFailure(databaseError.toException());
+                    } else {
+                        callback.onSuccess();
+                    }
+                });
     }
 
     /*public void update(final WorkstationEntity Workstation, OnAsyncEventListener callback,
@@ -54,9 +60,22 @@ public class WorkstationRepository {
         new UpdateWorkstation(application, callback).execute(Workstation);
     }*/
 
-    public void update(final WorkstationEntity Workstation, OnAsyncEventListener callback,
-                       Application application) {
-        new UpdateWorkstation(application, callback).execute(Workstation);
+    public void update(final WorkstationEntity Workstation, OnAsyncEventListener callback) {
+        FirebaseDatabase.getInstance()
+                .getReference("workstations")
+                .child(Workstation.getId())
+                .updateChildren(Workstation.toMap(),
+                        (databaseError, databaseReference) ->
+                        {
+                            if(databaseError!=null)
+                            {
+                                callback.onFailure(databaseError.toException());
+                            }
+                            else
+                            {
+                                callback.onSuccess();
+                            }
+                        });
     }
 
     /*public void delete(final WorkstationEntity Workstation, OnAsyncEventListener callback,
@@ -64,9 +83,21 @@ public class WorkstationRepository {
     new DeleteWorkstation(application, callback).execute(Workstation);
     }*/
 
-    public void delete(final WorkstationEntity Workstation, OnAsyncEventListener callback,
-                       Application application) {
-        new DeleteWorkstation(application, callback).execute(Workstation);
+    public void delete(final WorkstationEntity Workstation, OnAsyncEventListener callback) {
+        FirebaseDatabase.getInstance()
+            .getReference()
+            .child(Workstation.getId())
+            .removeValue((databaseError, databaseReference) ->
+            {
+                if(databaseError != null)
+                {
+                    callback.onFailure(databaseError.toException());
+                }
+                else
+                {
+                    callback.onSuccess();
+                }
+            });
     }
 
 
@@ -76,10 +107,10 @@ public class WorkstationRepository {
         return AppDatabase.getInstance(context).workstationDao().getWorkstation(workstationId);
     }*/
 
-    public LiveData<WorkstationEntity> getWorkstation(final long workstationId){
+    public LiveData<WorkstationEntity> getWorkstation(final String workstationId){
         DatabaseReference reference = FirebaseDatabase.getInstance()
                 .getReference("workstations")
-                .child(Long.toString(workstationId));
+                .child(workstationId);
         return new WorkstationLiveData(reference);
     }
 
@@ -87,10 +118,11 @@ public class WorkstationRepository {
         return ((BaseApp)application).getDatabase().workstationDao().getWorkstationsByOfficeId(officeId);
     }*/
 
-    public LiveData<List<WorkstationEntity>> getWorkstationsByOffice(final long officeId, Application application){
+    public LiveData<List<WorkstationEntity>> getWorkstationsByOffice(final String officeId, Application application){
         DatabaseReference reference = FirebaseDatabase.getInstance()
                 .getReference("workstations")
-                .getParent(); // pas sûr
+                .child(officeId); // pas sûr
+
         return new WorkstationListLiveData(reference);
     }
 

@@ -22,7 +22,7 @@ public class OfficeViewModel extends AndroidViewModel {
 
     private MediatorLiveData<OfficeEntity> observableOffice ;
 
-    public OfficeViewModel(@NonNull Application app, final long officeId, OfficeRepository officeRepository){
+    public OfficeViewModel(@NonNull Application app, final String officeId, OfficeRepository officeRepository){
 
         super(app);
 
@@ -46,11 +46,11 @@ public class OfficeViewModel extends AndroidViewModel {
         @NonNull
         private final Application app ;
 
-        private final long idOffice;
+        private final String idOffice;
 
         private final OfficeRepository repository ;
 
-        public Factory (@NonNull Application app, long idOffice){
+        public Factory (@NonNull Application app, String idOffice){
             this.app = app ;
             this.idOffice = idOffice;
             repository = OfficeRepository.getInstance();

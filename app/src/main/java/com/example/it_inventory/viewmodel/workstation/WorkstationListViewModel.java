@@ -23,7 +23,7 @@ public class WorkstationListViewModel extends AndroidViewModel {
 
     private final MediatorLiveData<List<WorkstationEntity>> observableWorkstations;
 
-    public WorkstationListViewModel(@NonNull Application app, final long officeId,
+    public WorkstationListViewModel(@NonNull Application app, final String officeId,
                                      WorkstationRepository workstationRepository){
         super(app);
         this.app = app ;
@@ -44,13 +44,13 @@ public class WorkstationListViewModel extends AndroidViewModel {
         @NonNull
         Application app;
 
-        private final long officeId;
+        private final String officeId;
 
 
 
         private final WorkstationRepository workstationRepository;
 
-        public Factory(@NonNull Application app, long officeId){
+        public Factory(@NonNull Application app, String officeId){
             this.app = app;
             this.officeId = officeId;
             workstationRepository = ((BaseApp)app).getWorkstationRepository();
