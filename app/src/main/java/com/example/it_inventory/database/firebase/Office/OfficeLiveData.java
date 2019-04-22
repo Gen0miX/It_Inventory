@@ -7,6 +7,8 @@ import com.google.firebase.database.Query;
  * Creation date:
  * Last update date: 17.04.2019
  */
+
+// comment-test for commit
 public class OfficeLiveData
 {
     private final Query myQuery;
