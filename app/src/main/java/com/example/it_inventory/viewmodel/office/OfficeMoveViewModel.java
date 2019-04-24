@@ -1,4 +1,4 @@
-package com.example.it_inventory.viewModel.office;
+package com.example.it_inventory.viewmodel.office;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
@@ -22,7 +22,7 @@ public class OfficeMoveViewModel extends AndroidViewModel {
 
     private final MediatorLiveData<List<OfficeEntity>> observableOffices;
 
-    public OfficeMoveViewModel(@NonNull Application app, final long officeId,
+    public OfficeMoveViewModel(@NonNull Application app, final String officeId,
                                OfficeRepository officeRepository){
         super(app);
         this.app = app ;
@@ -41,11 +41,11 @@ public class OfficeMoveViewModel extends AndroidViewModel {
         @NonNull
         Application app;
 
-        private final long officeId;
+        private final String officeId;
 
         private final OfficeRepository officeRepository;
 
-        public Factory(@NonNull Application app, long officeId){
+        public Factory(@NonNull Application app, String officeId){
             this.app = app;
             this.officeId=officeId;
             officeRepository = ((BaseApp)app).getOfficeRepository();
