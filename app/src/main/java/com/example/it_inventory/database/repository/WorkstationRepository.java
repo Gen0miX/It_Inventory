@@ -123,7 +123,7 @@ public class WorkstationRepository {
                 .getReference("workstations")
                 .child(officeId); // pas sûr
 
-        return new WorkstationListLiveData(reference);
+        return new WorkstationListLiveData(reference, officeId);
     }
 
 }

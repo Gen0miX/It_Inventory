@@ -50,7 +50,7 @@ public class WorkstationActivity extends AppCompatActivity {
 
     private boolean isEditable;
 
-    private long officeId ;
+    private String officeId ;
 
     private WorkstationEntity workstation;
 
@@ -68,8 +68,8 @@ public class WorkstationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workstation);
 
-        long workstationId = getIntent().getLongExtra("workstationId", 0);
-        officeId = getIntent().getLongExtra("officeId", 0);
+        String workstationId = getIntent().getStringExtra("workstationId");
+        officeId = getIntent().getStringExtra("officeId");
 
         initiateView();
 
@@ -82,7 +82,7 @@ public class WorkstationActivity extends AppCompatActivity {
             }
         });
 
-        if(workstationId != 0){
+        if(workstationId != null){
             setTitle("Workstation Details");
         }else{
             setTitle("Create Workstation");
@@ -266,8 +266,8 @@ public class WorkstationActivity extends AppCompatActivity {
     }
 
     //Create a new Workstation
-    private void createWorkstation(boolean screens, boolean portable, String os, Integer ram,
-                                   Integer storage, String processor, String keyboard){
+    private void createWorkstation(boolean screens, boolean portable, String os, double ram,
+                                   double storage, String processor, String keyboard){
 
 
         if(os.isEmpty()){
@@ -312,8 +312,8 @@ public class WorkstationActivity extends AppCompatActivity {
     }
 
     //Save changes when a workstation is edited
-    private void saveChanges(boolean screens, boolean portable, String os, int ram,
-                                   int storage, String processor, String keyboard){
+    private void saveChanges(boolean screens, boolean portable, String os, double ram,
+                                   double storage, String processor, String keyboard){
         workstation.setScreens(screens);
         workstation.setPortable(portable);
         workstation.setOs(os);

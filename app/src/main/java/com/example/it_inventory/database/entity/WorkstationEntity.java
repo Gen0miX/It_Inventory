@@ -97,6 +97,11 @@ public class WorkstationEntity {
         this.officeName = officeId ;
     }
 
+    public String getRamString(){ return ram.toString(); }
+
+    public String getStorageString(){ return storage.toString(); }
+
+
     public boolean equals(Object obj) {
         if (obj == null) return false;
         if (obj == this) return true;

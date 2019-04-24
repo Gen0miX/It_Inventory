@@ -16,7 +16,6 @@ import android.view.View;
 
 import com.example.it_inventory.R;
 import com.example.it_inventory.adapter.OfficeAdapter;
-import com.example.it_inventory.adapter.WorkstationsAdapter;
 import com.example.it_inventory.database.AppDatabase;
 import com.example.it_inventory.database.entity.OfficeEntity;
 import com.example.it_inventory.database.entity.WorkstationEntity;
@@ -25,8 +24,7 @@ import com.example.it_inventory.ui.workstation.WorkstationsActivity;
 import com.example.it_inventory.util.OnAsyncEventListener;
 import com.example.it_inventory.util.RecyclerViewItemClickListener;
 import com.example.it_inventory.viewModel.office.OfficeListViewModel;
-import com.example.it_inventory.viewModel.office.OfficeMoveViewModel;
-import com.example.it_inventory.viewmodel.workstation.WorkstationListViewModel;
+import com.example.it_inventory.viewmodel.office.OfficeMoveViewModel;
 import com.example.it_inventory.viewmodel.workstation.WorkstationViewModel;
 
 import java.util.ArrayList;
@@ -49,8 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     private List<OfficeEntity> offices;
 
-    private long officeId;
-    private long workstationId;
+    private String officeId, workstationId;
 
 
 
@@ -85,11 +82,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        officeId = getIntent().getLongExtra("officeId", 0);
-        workstationId = getIntent().getLongExtra("workstationId", 0);
+        officeId = getIntent().getStringExtra("officeId");
+        workstationId = getIntent().getStringExtra("workstationId");
 
         //Create the MainActivity with all the offices
-        if(officeId == 0){
+        if(officeId == null){
             //Initialize Database and datas
             initializeDemoData(AppDatabase.getInstance(this));
             RecyclerView recyclerView = findViewById(R.id.recyclerview_office);
