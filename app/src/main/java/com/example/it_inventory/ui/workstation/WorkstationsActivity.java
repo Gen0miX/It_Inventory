@@ -78,7 +78,7 @@ public class WorkstationsActivity extends AppCompatActivity {
                         Intent.FLAG_ACTIVITY_NO_ANIMATION
                 );
                 intent.putExtra("workstationId", workstations.get(position).getId());
-                intent.putExtra("officeId", workstations.get(position).getOfficeId());
+                intent.putExtra("officeId", officeId);
                 startActivity(intent);
             }
 
@@ -92,7 +92,7 @@ public class WorkstationsActivity extends AppCompatActivity {
                         Intent.FLAG_ACTIVITY_NO_ANIMATION
                 );
                 intent.putExtra("workstationId", workstations.get(position).getId());
-                intent.putExtra("OfficeId", workstations.get(position).getOfficeId());
+                intent.putExtra("officeId", officeId);
                 startActivity(intent);
             }
 

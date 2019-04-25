@@ -42,9 +42,14 @@ public class WorkstationLiveData extends LiveData<WorkstationEntity> {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot){
             WorkstationEntity entity = dataSnapshot.getValue(WorkstationEntity.class);
-            entity.setId(dataSnapshot.getKey());
-            entity.setOfficeId(owner);
-            setValue(entity);
+            System.out.println(dataSnapshot.getKey());
+            if(entity == null)
+                return;
+            else{
+                entity.setId(dataSnapshot.getKey());
+                entity.setOfficeId(owner);
+                setValue(entity);
+            }
         }
 
         @Override

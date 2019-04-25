@@ -111,9 +111,11 @@ public class WorkstationRepository {
         return AppDatabase.getInstance(context).workstationDao().getWorkstation(workstationId);
     }*/
 
-    public LiveData<WorkstationEntity> getWorkstation(final String workstationId){
+    public LiveData<WorkstationEntity> getWorkstation(final String workstationId, final String officeId){
         DatabaseReference reference = FirebaseDatabase.getInstance()
-                .getReference("workstations")
+                .getReference("offices")
+                .child(officeId)
+                .child("workstations")
                 .child(workstationId);
         return new WorkstationLiveData(reference);
     }
@@ -126,7 +128,7 @@ public class WorkstationRepository {
         DatabaseReference reference = FirebaseDatabase.getInstance()
                 .getReference("offices")
                 .child(officeId)
-                .child("workstations");// pas sûr
+                .child("workstations");
 
         return new WorkstationListLiveData(reference, officeId);
     }

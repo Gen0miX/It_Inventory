@@ -22,10 +22,8 @@ public class WorkstationViewModel extends AndroidViewModel {
 
     private MediatorLiveData<WorkstationEntity> observableWorkstation;
 
-    public WorkstationViewModel(@NonNull Application app, final String workstationId, WorkstationRepository workstationRepository){
+    public WorkstationViewModel(@NonNull Application app, final String workstationId, final String officeId, WorkstationRepository workstationRepository){
         super(app);
-
-        this.app = app ;
 
         repository = workstationRepository;
 
@@ -36,7 +34,7 @@ public class WorkstationViewModel extends AndroidViewModel {
 
 
         if(workstationId != null) {
-            LiveData<WorkstationEntity> workstation = repository.getWorkstation(workstationId);
+            LiveData<WorkstationEntity> workstation = repository.getWorkstation(workstationId, officeId);
 
             observableWorkstation.addSource(workstation, observableWorkstation::setValue);
         }
@@ -46,19 +44,22 @@ public class WorkstationViewModel extends AndroidViewModel {
         @NonNull
         private final Application app;
 
-        private final String workstationId;
+        private final String workstationId, officeId;
+
+
 
         private final WorkstationRepository repository;
 
-        public Factory(@NonNull Application app, String workstationId){
+        public Factory(@NonNull Application app, String workstationId, String officeId){
             this.app = app;
             this.workstationId = workstationId;
+            this.officeId = officeId;
             repository=WorkstationRepository.getInstance();
         }
 
         @Override
         public <T extends ViewModel> T create(Class<T> modelClass){
-            return (T) new WorkstationViewModel(app, workstationId, repository);
+            return (T) new WorkstationViewModel(app, workstationId, officeId, repository);
         }
     }
 

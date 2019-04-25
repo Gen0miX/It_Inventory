@@ -50,7 +50,7 @@ public class WorkstationActivity extends AppCompatActivity {
 
     private boolean isEditable;
 
-    private String officeId ;
+    private String officeId, workstationId ;
 
     private WorkstationEntity workstation;
 
@@ -68,12 +68,12 @@ public class WorkstationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workstation);
 
-        String workstationId = getIntent().getStringExtra("workstationId");
+        workstationId = getIntent().getStringExtra("workstationId");
         officeId = getIntent().getStringExtra("officeId");
 
         initiateView();
 
-        WorkstationViewModel.Factory factory = new WorkstationViewModel.Factory(getApplication(), workstationId);
+        WorkstationViewModel.Factory factory = new WorkstationViewModel.Factory(getApplication(), workstationId, officeId);
         viewModel = ViewModelProviders.of(this, factory).get(WorkstationViewModel.class);
         viewModel.getWorkstation().observe(this, workstationEntity -> {
             if(workstationEntity != null){

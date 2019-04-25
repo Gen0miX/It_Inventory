@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
             recyclerView.addItemDecoration(dividerItemDecoration);
 
             //Get the Workstation we want to move
-            WorkstationViewModel.Factory wfactory = new WorkstationViewModel.Factory(getApplication(), workstationId);
+            WorkstationViewModel.Factory wfactory = new WorkstationViewModel.Factory(getApplication(), workstationId, officeId);
             workstationViewModel = ViewModelProviders.of(this, wfactory).get(WorkstationViewModel.class);
             workstationViewModel.getWorkstation().observe(this, workstationEntity -> {
                 if(workstationEntity != null){
