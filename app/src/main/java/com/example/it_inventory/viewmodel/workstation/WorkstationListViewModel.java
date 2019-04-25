@@ -34,7 +34,7 @@ public class WorkstationListViewModel extends AndroidViewModel {
         observableWorkstations.setValue(null);
 
             LiveData<List<WorkstationEntity>> listWorkstationsByOffice =
-                    workstationRepository.getWorkstationsByOffice(officeId, app);
+                    workstationRepository.getWorkstationsByOffice(officeId);
             observableWorkstations.addSource(listWorkstationsByOffice, observableWorkstations::setValue);
 
     }

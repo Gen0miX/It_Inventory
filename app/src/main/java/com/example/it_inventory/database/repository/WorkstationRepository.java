@@ -39,13 +39,18 @@ public class WorkstationRepository {
         new CreateWorkstation(application, callback).execute(Workstation);
     }*/
 
-    public void insert(final WorkstationEntity Workstation, OnAsyncEventListener callback) {
-        String id = FirebaseDatabase.getInstance()
-                .getReference("workstations").push().getKey();
+    public void insert(final WorkstationEntity workstation, OnAsyncEventListener callback) {
+        DatabaseReference reference = FirebaseDatabase.getInstance()
+                .getReference("offices")
+                .child(workstation.getOfficeId())
+                .child("workstations");
+        String key = reference.push().getKey();
         FirebaseDatabase.getInstance()
-                .getReference("workstations")
-                .child(id)
-                .setValue(Workstation, (databaseError, databaseReference) ->
+                .getReference("offices")
+                .child(workstation.getOfficeId())
+                .child("workstations")
+                .child(key)
+                .setValue(workstation, (databaseError, databaseReference) ->
                 {
                     if (databaseError != null) {
                         callback.onFailure(databaseError.toException());
@@ -118,7 +123,7 @@ public class WorkstationRepository {
         return ((BaseApp)application).getDatabase().workstationDao().getWorkstationsByOfficeId(officeId);
     }*/
 
-    public LiveData<List<WorkstationEntity>> getWorkstationsByOffice(final String officeId, Application application){
+    public LiveData<List<WorkstationEntity>> getWorkstationsByOffice(final String officeId){
         DatabaseReference reference = FirebaseDatabase.getInstance()
                 .getReference("workstations")
                 .child(officeId); // pas sûr
