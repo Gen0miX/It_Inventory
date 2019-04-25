@@ -64,11 +64,13 @@ public class WorkstationRepository {
         new UpdateWorkstation(application, callback).execute(Workstation);
     }*/
 
-    public void update(final WorkstationEntity Workstation, OnAsyncEventListener callback) {
+    public void update(final WorkstationEntity workstation, OnAsyncEventListener callback) {
         FirebaseDatabase.getInstance()
-                .getReference("workstations")
-                .child(Workstation.getId())
-                .updateChildren(Workstation.toMap(),
+                .getReference("offices")
+                .child(workstation.getOfficeId())
+                .child("workstations")
+                .child(workstation.getId())
+                .updateChildren(workstation.toMap(),
                         (databaseError, databaseReference) ->
                         {
                             if(databaseError!=null)
@@ -87,10 +89,14 @@ public class WorkstationRepository {
     new DeleteWorkstation(application, callback).execute(Workstation);
     }*/
 
-    public void delete(final WorkstationEntity Workstation, OnAsyncEventListener callback) {
+    public void delete(final WorkstationEntity workstation, OnAsyncEventListener callback) {
+
+
         FirebaseDatabase.getInstance()
-            .getReference()
-            .child(Workstation.getId())
+            .getReference("offices")
+            .child(workstation.getOfficeId())
+            .child("workstations")
+            .child(workstation.getId())
             .removeValue((databaseError, databaseReference) ->
             {
                 if(databaseError != null)

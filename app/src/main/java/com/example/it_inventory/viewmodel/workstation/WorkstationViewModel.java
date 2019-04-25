@@ -11,6 +11,7 @@ import android.support.annotation.NonNull;
 
 import com.example.it_inventory.database.entity.WorkstationEntity;
 import com.example.it_inventory.database.repository.WorkstationRepository;
+import com.example.it_inventory.ui.BaseApp;
 import com.example.it_inventory.util.OnAsyncEventListener;
 
 public class WorkstationViewModel extends AndroidViewModel {
@@ -74,7 +75,7 @@ public class WorkstationViewModel extends AndroidViewModel {
     }
 
     public void deleteWorkstation(WorkstationEntity workstation, OnAsyncEventListener callback){
-        repository.delete(workstation, callback);
+        ((BaseApp)getApplication()).getWorkstationRepository().delete(workstation, callback);
     }
 
 }

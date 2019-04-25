@@ -236,8 +236,8 @@ public class WorkstationActivity extends AppCompatActivity {
             saveChanges(
                         swScreens.isChecked(), swPortable.isChecked(),
                         etOs.getText().toString(),
-                        Integer.parseInt(etRam.getText().toString()),
-                        Integer.parseInt(etStorage.getText().toString()),
+                        Double.parseDouble(etRam.getText().toString()),
+                        Double.parseDouble(etStorage.getText().toString()),
                         etProcessor.getText().toString(),
                         spKeyboard.getSelectedItem().toString()
             );
@@ -321,6 +321,7 @@ public class WorkstationActivity extends AppCompatActivity {
         workstation.setStorage(storage);
         workstation.setProcessor(processor);
         workstation.setKeyboardType(keyboard);
+
 
         viewModel.updateWorkstation(workstation, new OnAsyncEventListener() {
             @Override

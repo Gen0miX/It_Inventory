@@ -6,6 +6,7 @@ import android.arch.lifecycle.LiveData;
 import com.example.it_inventory.database.entity.OfficeEntity;
 import com.example.it_inventory.database.firebase.Office.OfficeListLiveData;
 import com.example.it_inventory.database.firebase.Office.OfficeLiveData;
+import com.example.it_inventory.database.firebase.Office.OfficeMoveListLiveData;
 import com.example.it_inventory.ui.BaseApp;
 import com.example.it_inventory.util.OnAsyncEventListener;
 import com.google.firebase.database.DatabaseReference;
@@ -131,7 +132,7 @@ public class OfficeRepository {
    public LiveData<List<OfficeEntity>> getOfficesMove(final String officeId){
        DatabaseReference reference = FirebaseDatabase.getInstance()
                .getReference("offices");
-       return new OfficeListLiveData(reference);
+       return new OfficeMoveListLiveData(reference, officeId);
    }
 
 }

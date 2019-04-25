@@ -88,7 +88,6 @@ public class WorkstationEntity {
         this.keyboardType = keyboardType;
     }
 
-    @Exclude
     public String getOfficeId(){
         return officeId;
     }
