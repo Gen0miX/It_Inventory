@@ -17,7 +17,6 @@ public class OfficeViewModel extends AndroidViewModel {
 
     private OfficeRepository repository ;
 
-    private Application app ;
 
     //private Context appContext ;
 
@@ -27,8 +26,6 @@ public class OfficeViewModel extends AndroidViewModel {
 
         super(app);
 
-        this.app = app ;
-
         repository = officeRepository ;
 
         //appContext = app.getApplicationContext();
@@ -36,9 +33,12 @@ public class OfficeViewModel extends AndroidViewModel {
         observableOffice = new MediatorLiveData<>();
         observableOffice.setValue(null);
 
-        LiveData<OfficeEntity> office = repository.getOffice(officeId);
+        if(officeId != null){
+            LiveData<OfficeEntity> office = repository.getOffice(officeId);
 
-        observableOffice.addSource(office, observableOffice::setValue);
+            observableOffice.addSource(office, observableOffice::setValue);
+        }
+
 
     }
 

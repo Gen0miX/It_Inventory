@@ -66,7 +66,7 @@ public class OfficeActivity extends AppCompatActivity {
         OfficeViewModel.Factory factory = new OfficeViewModel.Factory(getApplication(), officeId);
         viewModel = ViewModelProviders.of(this, factory).get(OfficeViewModel.class);
         viewModel.getOffice().observe(this, officeEntity -> {
-            if(officeEntity != null) {
+            if(officeEntity != null){
                 office = officeEntity ;
                 updateContent();
             }

@@ -22,8 +22,6 @@ public class OfficeRepository {
 
     private static OfficeRepository instance ;
 
-    public OfficeRepository(){}
-
     public static OfficeRepository getInstance(){
         if (instance == null) {
             synchronized (OfficeRepository.class){
