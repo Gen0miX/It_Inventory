@@ -17,7 +17,7 @@ import com.example.it_inventory.R;
 import com.example.it_inventory.database.entity.OfficeEntity;
 import com.example.it_inventory.ui.workstation.WorkstationsActivity;
 import com.example.it_inventory.util.OnAsyncEventListener;
-import com.example.it_inventory.viewModel.office.OfficeViewModel;
+import com.example.it_inventory.viewmodel.office.OfficeViewModel;
 
 public class OfficeActivity extends AppCompatActivity {
 
@@ -59,7 +59,7 @@ public class OfficeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_office);
 
-        long officeId = getIntent().getLongExtra("officeId", 0);
+        String officeId = getIntent().getStringExtra("officeId");
 
         initiateView();
 
@@ -71,6 +71,7 @@ public class OfficeActivity extends AppCompatActivity {
                 updateContent();
             }
         });
+
         fab = findViewById(R.id.floatingActionWorkstation);
         fab.setOnClickListener(view -> {
             Intent intent = new Intent(OfficeActivity.this, WorkstationsActivity.class);
@@ -81,7 +82,7 @@ public class OfficeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        if(officeId != 0){
+        if(officeId != null){
             setTitle(R.string.title_office_details);
         }else {
             setTitle(R.string.title_office_create);

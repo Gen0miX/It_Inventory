@@ -32,7 +32,7 @@ public class OfficeMoveViewModel extends AndroidViewModel {
         observableOffices.setValue(null);
 
         LiveData<List<OfficeEntity>> listOffices =
-                officeRepository.getOfficesMove(officeId, app);
+                officeRepository.getOfficesMove(officeId);
 
         observableOffices.addSource(listOffices, observableOffices::setValue);
     }

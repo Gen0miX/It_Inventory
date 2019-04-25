@@ -16,7 +16,6 @@ import android.view.View;
 
 import com.example.it_inventory.R;
 import com.example.it_inventory.adapter.OfficeAdapter;
-import com.example.it_inventory.database.AppDatabase;
 import com.example.it_inventory.database.entity.OfficeEntity;
 import com.example.it_inventory.database.entity.WorkstationEntity;
 import com.example.it_inventory.ui.office.OfficeActivity;
@@ -26,11 +25,12 @@ import com.example.it_inventory.util.RecyclerViewItemClickListener;
 import com.example.it_inventory.viewModel.office.OfficeListViewModel;
 import com.example.it_inventory.viewmodel.office.OfficeMoveViewModel;
 import com.example.it_inventory.viewmodel.workstation.WorkstationViewModel;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.it_inventory.database.AppDatabase.initializeDemoData;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String officeId, workstationId;
 
+    private FirebaseAnalytics mFirebaseAnalytics ;
 
 
     @Override
@@ -87,8 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Create the MainActivity with all the offices
         if(officeId == null){
-            //Initialize Database and datas
-            initializeDemoData(AppDatabase.getInstance(this));
+            //Initialize Database and data
             RecyclerView recyclerView = findViewById(R.id.recyclerview_office);
 
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);

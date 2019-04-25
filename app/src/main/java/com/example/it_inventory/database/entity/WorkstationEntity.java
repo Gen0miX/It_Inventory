@@ -16,7 +16,7 @@ public class WorkstationEntity {
     private Double storage;
     private String processor;
     private String keyboardType;
-    private String officeName;
+    private String officeId;
 
     public WorkstationEntity(){
     }
@@ -90,11 +90,11 @@ public class WorkstationEntity {
 
     @Exclude
     public String getOfficeId(){
-        return officeName;
+        return officeId;
     }
 
     public void setOfficeId(String officeId){
-        this.officeName = officeId ;
+        this.officeId = officeId ;
     }
 
     public String getRamString(){ return ram.toString(); }

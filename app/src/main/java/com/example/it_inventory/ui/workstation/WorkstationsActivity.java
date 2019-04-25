@@ -59,7 +59,7 @@ public class WorkstationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workstations);
 
-        long officeId = getIntent().getLongExtra("officeId", 0);
+        String officeId = getIntent().getStringExtra("officeId");
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview_workstations);
 

@@ -8,9 +8,9 @@ package com.example.it_inventory.ui;
 
 import android.app.Application;
 
-import com.example.it_inventory.database.AppDatabase;
 import com.example.it_inventory.database.repository.OfficeRepository;
 import com.example.it_inventory.database.repository.WorkstationRepository;
+import com.google.firebase.FirebaseApp;
 
 /**
  * Android Application class. Used for accessing singletons.
@@ -20,10 +20,6 @@ public class BaseApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-    }
-
-    public AppDatabase getDatabase() {
-        return AppDatabase.getInstance(this);
     }
 
     public OfficeRepository getOfficeRepository() {

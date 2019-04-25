@@ -126,8 +126,14 @@ public class OfficeRepository {
         return new OfficeListLiveData(reference);
     }
 
-    public LiveData<List<OfficeEntity>> getOfficesMove(String officeId, Application app){
+   /* public LiveData<List<OfficeEntity>> getOfficesMove(String officeId, Application app){
         return ((BaseApp)app).getDatabase().officeDao().getOfficesMove(officeId);
-    }
+    }*/
+
+   public LiveData<List<OfficeEntity>> getOfficesMove(final String officeId){
+       DatabaseReference reference = FirebaseDatabase.getInstance()
+               .getReference("offices");
+       return new OfficeListLiveData(reference);
+   }
 
 }

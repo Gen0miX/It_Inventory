@@ -1,4 +1,4 @@
-package com.example.it_inventory.viewModel.office;
+package com.example.it_inventory.viewmodel.office;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 
 import com.example.it_inventory.database.entity.OfficeEntity;
 import com.example.it_inventory.database.repository.OfficeRepository;
+import com.example.it_inventory.ui.BaseApp;
 import com.example.it_inventory.util.OnAsyncEventListener;
 
 public class OfficeViewModel extends AndroidViewModel {
@@ -72,7 +73,7 @@ public class OfficeViewModel extends AndroidViewModel {
     }
 
     public void createOffice(OfficeEntity office, OnAsyncEventListener callback){
-        repository.insert(office, callback);
+        ((BaseApp) getApplication()).getOfficeRepository().insert(office, callback);
     }
 
     public void deleteOffice(OfficeEntity office, OnAsyncEventListener callback){
