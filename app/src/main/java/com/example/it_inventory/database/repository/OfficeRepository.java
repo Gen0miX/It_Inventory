@@ -42,7 +42,7 @@ public class OfficeRepository {
         String id = FirebaseDatabase.getInstance()
                 .getReference("offices").push().getKey();
         FirebaseDatabase.getInstance()
-                .getReference()
+                .getReference("offices")
                 .child(id)
                 .setValue(Office, (databaseError, databaseReference) ->
                 {

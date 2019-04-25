@@ -49,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
 
     private String officeId, workstationId;
 
-    private FirebaseAnalytics mFirebaseAnalytics ;
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){

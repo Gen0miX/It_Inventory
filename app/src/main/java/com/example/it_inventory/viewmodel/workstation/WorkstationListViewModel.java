@@ -53,7 +53,7 @@ public class WorkstationListViewModel extends AndroidViewModel {
         public Factory(@NonNull Application app, String officeId){
             this.app = app;
             this.officeId = officeId;
-            workstationRepository = ((BaseApp)app).getWorkstationRepository();
+            workstationRepository = WorkstationRepository.getInstance();
         }
 
         @Override

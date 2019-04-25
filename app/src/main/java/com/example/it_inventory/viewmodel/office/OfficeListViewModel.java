@@ -18,15 +18,11 @@ public class OfficeListViewModel extends AndroidViewModel {
 
     private OfficeRepository repository ;
 
-    private Application app ;
-
     private MediatorLiveData<List<OfficeEntity>> observableOffice ;
 
     public OfficeListViewModel(@NonNull Application app, OfficeRepository officeRepository){
 
         super(app);
-
-        this.app = app ;
 
         repository = officeRepository ;
 
@@ -47,7 +43,7 @@ public class OfficeListViewModel extends AndroidViewModel {
 
         public Factory (@NonNull Application app){
             this.app = app ;
-            repository = ((BaseApp)app).getOfficeRepository();
+            repository = OfficeRepository.getInstance();
         }
 
         @Override
