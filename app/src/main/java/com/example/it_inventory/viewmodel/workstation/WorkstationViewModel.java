@@ -34,9 +34,12 @@ public class WorkstationViewModel extends AndroidViewModel {
         observableWorkstation = new MediatorLiveData<>();
         observableWorkstation.setValue(null);
 
-        LiveData<WorkstationEntity> workstation = repository.getWorkstation(workstationId);
 
-        observableWorkstation.addSource(workstation, observableWorkstation::setValue);
+        if(workstationId != null) {
+            LiveData<WorkstationEntity> workstation = repository.getWorkstation(workstationId);
+
+            observableWorkstation.addSource(workstation, observableWorkstation::setValue);
+        }
     }
 
     public static class Factory extends ViewModelProvider.NewInstanceFactory{

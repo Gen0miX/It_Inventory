@@ -43,7 +43,7 @@ public class WorkstationRepository {
         String id = FirebaseDatabase.getInstance()
                 .getReference("workstations").push().getKey();
         FirebaseDatabase.getInstance()
-                .getReference()
+                .getReference("workstations")
                 .child(id)
                 .setValue(Workstation, (databaseError, databaseReference) ->
                 {
