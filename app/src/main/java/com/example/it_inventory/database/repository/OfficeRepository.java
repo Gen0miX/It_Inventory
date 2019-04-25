@@ -87,7 +87,7 @@ public class OfficeRepository {
 
     public void delete(final OfficeEntity Office, OnAsyncEventListener callback) {
         FirebaseDatabase.getInstance()
-                .getReference()
+                .getReference("offices")
                 .child(Office.getId())
                 .removeValue((databaseError, databaseReference) ->
                 {

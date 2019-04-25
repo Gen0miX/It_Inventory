@@ -1,7 +1,6 @@
 package com.example.it_inventory.database.firebase.Workstations;
 
 import android.arch.lifecycle.LiveData;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.util.Log;
 

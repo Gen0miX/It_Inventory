@@ -1,6 +1,5 @@
 package com.example.it_inventory.database.repository;
 
-import android.app.Application;
 import android.arch.lifecycle.LiveData;
 
 import com.example.it_inventory.database.entity.WorkstationEntity;
@@ -125,8 +124,9 @@ public class WorkstationRepository {
 
     public LiveData<List<WorkstationEntity>> getWorkstationsByOffice(final String officeId){
         DatabaseReference reference = FirebaseDatabase.getInstance()
-                .getReference("workstations")
-                .child(officeId); // pas sûr
+                .getReference("offices")
+                .child(officeId)
+                .child("workstations");// pas sûr
 
         return new WorkstationListLiveData(reference, officeId);
     }

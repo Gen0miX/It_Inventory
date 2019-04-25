@@ -26,7 +26,6 @@ public class WorkstationListViewModel extends AndroidViewModel {
     public WorkstationListViewModel(@NonNull Application app, final String officeId,
                                      WorkstationRepository workstationRepository){
         super(app);
-        this.app = app ;
 
         repository = workstationRepository ;
 
