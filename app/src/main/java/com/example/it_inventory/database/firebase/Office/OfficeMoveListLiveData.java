@@ -20,17 +20,20 @@ public class OfficeMoveListLiveData extends LiveData<List<OfficeEntity>> {
     private final String officeId;
     private final OfficeMoveListLiveData.MyValueEventListener listener = new OfficeMoveListLiveData.MyValueEventListener();
 
+    // Livedata : constructor
     public OfficeMoveListLiveData(DatabaseReference ref, String officeId){
         this.reference = ref;
         this.officeId = officeId;
     }
 
+    // When this livedata is active
     @Override
     protected void onActive() {
         Log.d(TAG, "onActive");
         reference.addValueEventListener(listener);
     }
 
+    // When this livedata is inactive
     @Override
     protected void onInactive() {
         Log.d(TAG, "onInactive");

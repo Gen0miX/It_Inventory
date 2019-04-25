@@ -11,11 +11,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
-/**
- * Author: Samuel Pinto Da Silva
- * Creation date:
- * Last update date: 25.03.2019
- */
+
 public class WorkstationRepository {
 
     private static WorkstationRepository instance ;
@@ -33,10 +29,6 @@ public class WorkstationRepository {
         return instance ;
     }
 
-    /*public void insert(final WorkstationEntity Workstation, OnAsyncEventListener callback,
-                       Application application) {
-        new CreateWorkstation(application, callback).execute(Workstation);
-    }*/
 
     public void insert(final WorkstationEntity workstation, OnAsyncEventListener callback) {
         DatabaseReference reference = FirebaseDatabase.getInstance()
@@ -59,10 +51,6 @@ public class WorkstationRepository {
                 });
     }
 
-    /*public void update(final WorkstationEntity Workstation, OnAsyncEventListener callback,
-                       Application application) {
-        new UpdateWorkstation(application, callback).execute(Workstation);
-    }*/
 
     public void update(final WorkstationEntity workstation, OnAsyncEventListener callback) {
         FirebaseDatabase.getInstance()
@@ -84,10 +72,6 @@ public class WorkstationRepository {
                         });
     }
 
-    /*public void delete(final WorkstationEntity Workstation, OnAsyncEventListener callback,
-                   Application application) {
-    new DeleteWorkstation(application, callback).execute(Workstation);
-    }*/
 
     public void delete(final WorkstationEntity workstation, OnAsyncEventListener callback) {
 
@@ -111,12 +95,6 @@ public class WorkstationRepository {
     }
 
 
-
-
-    /*public LiveData<WorkstationEntity> getWorkstation(final long workstationId, Context context){
-        return AppDatabase.getInstance(context).workstationDao().getWorkstation(workstationId);
-    }*/
-
     public LiveData<WorkstationEntity> getWorkstation(final String workstationId, final String officeId){
         DatabaseReference reference = FirebaseDatabase.getInstance()
                 .getReference("offices")
@@ -126,9 +104,6 @@ public class WorkstationRepository {
         return new WorkstationLiveData(reference);
     }
 
-    /*public LiveData<List<WorkstationEntity>> getWorkstationsByOffice(final long officeId, Application application){
-        return ((BaseApp)application).getDatabase().workstationDao().getWorkstationsByOfficeId(officeId);
-    }*/
 
     public LiveData<List<WorkstationEntity>> getWorkstationsByOffice(final String officeId){
         DatabaseReference reference = FirebaseDatabase.getInstance()

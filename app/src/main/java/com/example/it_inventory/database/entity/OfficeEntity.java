@@ -6,38 +6,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-//@Entity (tableName = "offices")
+// office entity
 public class OfficeEntity {
 
     // Office Entity parameters
-    //@PrimaryKey (autoGenerate = true)
-    //@ColumnInfo (name = "id")
     private String id;
-    //@ColumnInfo(name = "Floor")
     private int floor;
-    //@ColumnInfo (name = "Building")
     private String building;
-    //@ColumnInfo (name = "Sector")
     private String sector;
-    //@ColumnInfo (name = "City")
     private String city;
-    //@ColumnInfo (name = "Country")
     private String country;
 
-    // Constructor by default : ignored
-    //@Ignore
+    // Constructor
     public OfficeEntity(){
     }
-
-    // Constructor
-   /* public OfficeEntity(int floor, String building, String sector, String city, String country) {
-        this.floor = floor;
-        this.building = building;
-        this.sector = sector;
-        this.city = city;
-        this.country = country;
-    }*/
-
 
     // Getters and Setters
     @Exclude

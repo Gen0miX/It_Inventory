@@ -6,8 +6,10 @@ import com.google.firebase.database.Exclude;
 import java.util.HashMap;
 import java.util.Map;
 
-// Workstation Entity : parameters
+// Workstation Entity
 public class WorkstationEntity {
+
+    // Workstation Entity : parameters
     private String id ;
     private boolean screens;
     private boolean portable;

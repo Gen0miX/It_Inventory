@@ -1,24 +1,18 @@
 package com.example.it_inventory.database.repository;
 
-import android.app.Application;
 import android.arch.lifecycle.LiveData;
 
 import com.example.it_inventory.database.entity.OfficeEntity;
 import com.example.it_inventory.database.firebase.Office.OfficeListLiveData;
 import com.example.it_inventory.database.firebase.Office.OfficeLiveData;
 import com.example.it_inventory.database.firebase.Office.OfficeMoveListLiveData;
-import com.example.it_inventory.ui.BaseApp;
 import com.example.it_inventory.util.OnAsyncEventListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
-/**
- * Author: Samuel Pinto Da Silva
- * Creation date:
- * Last update date: 25.03.2019
- */
+
 public class OfficeRepository {
 
     private static OfficeRepository instance ;
@@ -33,11 +27,6 @@ public class OfficeRepository {
         }
         return instance ;
     }
-
-    /*public void insert(final OfficeEntity Office, OnAsyncEventListener callback,
-                       Application application) {
-        new CreateOffice(application, callback).execute(Office);
-    }*/
 
     public void insert(final OfficeEntity Office, OnAsyncEventListener callback) {
         String id = FirebaseDatabase.getInstance()
@@ -58,11 +47,6 @@ public class OfficeRepository {
                 });
     }
 
-    /*public void update(final OfficeEntity Office, OnAsyncEventListener callback,
-                       Application application) {
-        new UpdateOffice(application, callback).execute(Office);
-    }*/
-
     public void update(final OfficeEntity Office, OnAsyncEventListener callback) {
         FirebaseDatabase.getInstance()
                 .getReference("offices")
@@ -81,10 +65,6 @@ public class OfficeRepository {
                         });
     }
 
-    /*public void delete(final OfficeEntity Office, OnAsyncEventListener callback,
-                       Application application) {
-        new DeleteOffice(application, callback).execute(Office);
-    }*/
 
     public void delete(final OfficeEntity Office, OnAsyncEventListener callback) {
         FirebaseDatabase.getInstance()

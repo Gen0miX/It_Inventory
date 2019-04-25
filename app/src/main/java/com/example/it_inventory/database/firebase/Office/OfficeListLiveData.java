@@ -13,11 +13,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Author: Samuel Pinto Da Silva
- * Creation date:
- * Last update date: 17.04.2019
- */
+
 public class OfficeListLiveData extends LiveData<List<OfficeEntity>> {
 
     private static final String TAG = "Office" ;
@@ -25,16 +21,19 @@ public class OfficeListLiveData extends LiveData<List<OfficeEntity>> {
     private final DatabaseReference reference;
     private final OfficeListLiveData.MyValueEventListener listener = new OfficeListLiveData.MyValueEventListener();
 
+    // Livedata: constructor
     public OfficeListLiveData(DatabaseReference ref){
         this.reference = ref;
     }
 
+    // When this livedata is active
     @Override
     protected void onActive() {
         Log.d(TAG, "onActive");
         reference.addValueEventListener(listener);
     }
 
+    // When this livedata is inactive
     @Override
     protected void onInactive() {
         Log.d(TAG, "onInactive");

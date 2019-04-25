@@ -26,17 +26,20 @@ public class WorkstationListLiveData extends LiveData<List<WorkstationEntity>> {
     private final String owner;
     private final MyValueEventListener listener = new MyValueEventListener();
 
+    //Livedata: constructor
     public WorkstationListLiveData(DatabaseReference ref, String owner){
         this.reference = ref ;
         this.owner = owner;
     }
 
+    // When this livedata is active
     @Override
     protected void onActive(){
         Log.d(TAG, "onActive");
         reference.addValueEventListener(listener);
     }
 
+    // When this livedata is inactive
     @Override
     protected void onInactive(){
         Log.d(TAG, "onInactive");
